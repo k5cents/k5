@@ -46,9 +46,9 @@ invisibly.
 }
 \examples{
 # Extract two files from zip
-tmp <- path_temp("iris.csv")
+tmp <- tempfile(fileext = ".csv")
 write.csv(iris, tmp)
 zip <- zip_create(tmp, junk = TRUE)
-out <- zip_move(zip, dir = path_temp("out"))
-file_size(c(tmp, zip, out))
+out <- zip_move(zip, dir = tempdir())
+file.size(c(tmp, zip, out))
 }

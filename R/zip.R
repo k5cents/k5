@@ -10,13 +10,13 @@
 #'   unzip program.
 #' @examples
 #' # List two files from zip
-#' irs <- file_temp(ext = "csv")
+#' irs <- tempfile(fileext = ".csv")
 #' write.csv(iris, irs)
-#' mtc <- file_temp(ext = "csv")
+#' mtc <- tempfile(fileext = ".csv")
 #' write.csv(mtcars, mtc)
-#' zip <- path_temp("two.zip")
-#' zip_create(c(irs, mtc), zip)
-#' zip_ls(zip)
+#' zzp <- tempfile(fileext = ".zip")
+#' zip_create(c(irs, mtc), zzp, junk = TRUE)
+#' zip_ls(zzp)
 #' @importFrom fs path_real as_fs_path as_fs_bytes
 #' @importFrom utils unzip
 #' @importFrom tibble as_tibble
@@ -60,13 +60,13 @@ zip_ls <- function(path, method = "internal") {
 #' @return The path to the extracted files (invisibly).
 #' @examples
 #' # Extract two files from zip
-#' tmp <- path_temp("iris.csv")
+#' tmp <- tempfile(fileext = ".csv")
 #' write.csv(iris, tmp)
 #' zip <- zip_create(tmp, junk = TRUE)
-#' out <- zip_move(zip, dir = path_temp("out"))
-#' file_size(c(tmp, zip, out))
+#' out <- zip_move(zip, dir = tempdir())
+#' file.size(c(tmp, zip, out))
 #' @importFrom fs path_real dir_create as_fs_path
-#' @importFrom utilz unzip
+#' @importFrom utils unzip
 #' @export
 zip_move <- function(path, dir = NULL, files = NULL, overwrite = TRUE,
                      junk = FALSE, method = "internal") {
@@ -106,10 +106,10 @@ zip_move <- function(path, dir = NULL, files = NULL, overwrite = TRUE,
 #' @examples
 #' \dontshow{.old_wd <- setwd(tempdir())}
 #' # Zip a file to same basename
-#' tmp <- path_temp("iris.csv")
+#' tmp <- tempfile(fileext = ".csv")
 #' write.csv(iris, tmp)
 #' (zip <- zip_create(tmp))
-#' file_size(c(tmp, zip))
+#' file.size(c(tmp, zip))
 #' \dontshow{setwd(.old_wd)}
 #' @importFrom fs path_real path_ext_set path_expand
 #' @importFrom utils zip

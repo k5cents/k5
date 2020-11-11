@@ -41,9 +41,9 @@ A wrapper for an external \code{zip} command to create zip archives. Unlike
 \examples{
 \dontshow{.old_wd <- setwd(tempdir())}
 # Zip a file to same basename
-tmp <- path_temp("iris.csv")
+tmp <- tempfile(fileext = ".csv")
 write.csv(iris, tmp)
 (zip <- zip_create(tmp))
-file_size(c(tmp, zip))
+file.size(c(tmp, zip))
 \dontshow{setwd(.old_wd)}
 }

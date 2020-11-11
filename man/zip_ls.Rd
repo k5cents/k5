@@ -20,11 +20,11 @@ more than one archive is provided, files are identified by their source.
 }
 \examples{
 # List two files from zip
-irs <- file_temp(ext = "csv")
+irs <- tempfile(fileext = ".csv")
 write.csv(iris, irs)
-mtc <- file_temp(ext = "csv")
+mtc <- tempfile(fileext = ".csv")
 write.csv(mtcars, mtc)
-zip <- path_temp("two.zip")
-zip_create(c(irs, mtc), zip)
-zip_ls(zip)
+zzp <- tempfile(fileext = ".zip")
+zip_create(c(irs, mtc), zzp, junk = TRUE)
+zip_ls(zzp)
 }
