@@ -1,0 +1,21 @@
+Package: k5
+Title: Kiernan Nicholls Miscellaneous
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Kiernan",
+           family = "Nicholls",
+           role = c("aut", "cre"),
+           email = "kiernann@protonmail.com")
+Description: Quality of life functions used by Kiernan Nicholls.
+License: GPL-3
+Imports: 
+    aws.s3 (>= 0.3.21),
+    fs (>= 1.5.0),
+    readr (>= 1.4.0),
+    tibble (>= 3.0.4),
+    usethis (>= 1.6.3),
+    utils
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
