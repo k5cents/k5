@@ -2,13 +2,22 @@
 % Please edit documentation in R/print.R
 \name{print_all}
 \alias{print_all}
-\title{Print All Rows}
+\title{Print all rows of elements}
 \usage{
-print_all(x)
+print_all(x, ask = TRUE)
 }
 \arguments{
 \item{x}{Object to print, typically a data frame or vector.}
+
+\item{ask}{If the length of \code{x} exceeds \code{getOption("max.print")}, should the
+user be promoted to print everything. If \code{FALSE}, the maximum is printed
+without double checking; this can be \strong{extremelly} slow.}
+}
+\value{
+The object x (invisibly)
 }
 \description{
-If the object is a tibble, all rows are printed.
+Print up to the \code{getOption("max.print")} and ask the user if they want to
+print more than that. For tibbles and data frames, use \code{\link[=nrow]{nrow()}} rather than
+\code{\link[=length]{length()}}.
 }
