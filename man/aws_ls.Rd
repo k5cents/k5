@@ -4,7 +4,7 @@
 \alias{aws_ls}
 \title{List all objects in an AWS bucket}
 \usage{
-aws_ls(bucket = "publicaccountability", prefix = "csv", ...)
+aws_ls(bucket = getOption("bucket"), prefix = NULL, ...)
 }
 \arguments{
 \item{bucket}{Character string with the name of the bucket, or an object of

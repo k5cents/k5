@@ -12,7 +12,8 @@
 #' @importFrom readr parse_datetime
 #' @importFrom tibble as_tibble
 #' @export
-aws_ls <- function(bucket = "publicaccountability", prefix = "csv", ...) {
+aws_ls <- function(bucket = getOption("bucket"), prefix = NULL, ...) {
+  stopifnot(!is.null(bucket))
   z <- aws.s3::get_bucket_df(bucket = bucket, prefix = prefix, ...)
   z$path <- fs::as_fs_path(z$Key)
   z$size <- fs::as_fs_bytes(z$Size)
