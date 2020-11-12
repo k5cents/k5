@@ -18,6 +18,7 @@
 #' write.csv(mtcars, mtc)
 #' zzp <- tempfile(fileext = ".zip")
 #' zip_create(c(irs, mtc), zzp, junk = TRUE)
+#' zip_size(zzp)
 #' zip_info(zzp)
 #' zip_ls(zzp)
 #' @importFrom fs path_real as_fs_path as_fs_bytes
@@ -49,6 +50,25 @@ zip_ls <- function(path, method = "internal") {
   )
   z <- do.call(what = "rbind", args = z)
   fs::as_fs_path(z$Name)
+}
+
+#' @rdname zip_info
+#' @param sum If `TRUE` (default) the summed size of archive contents is
+#'   returned invisibly and a message comparing sizes is printed. If `FALSE`,
+#'   the uncompressed size of all contents is returned as a numeric `fs_bytes`
+#'   vector.
+#' @export
+zip_size <- function(path, sum = TRUE, method = "internal") {
+  c <- fs::file_size(path)
+  b <- zip_info(path, method = method)
+  d <- sum(b$size)
+  if (sum) {
+    diff <- scales::percent(a/c, 0.01)
+    cat(glue::glue("deflated: {d}, compressed: {c} ({diff})"))
+    return(invisible(c))
+  } else {
+    b$size
+  }
 }
 
 #' Extract zip contents

@@ -3,17 +3,25 @@
 \name{zip_info}
 \alias{zip_info}
 \alias{zip_ls}
+\alias{zip_size}
 \title{List zip contents}
 \usage{
 zip_info(path, method = "internal")
 
 zip_ls(path, method = "internal")
+
+zip_size(path, sum = TRUE, method = "internal")
 }
 \arguments{
 \item{path}{A character vector of zip archives.}
 
 \item{method}{The method to be used. Passed to \code{utils::unizp()}. An
 alternative is to use \code{getOption("unzip")}.}
+
+\item{sum}{If \code{TRUE} (default) the summed size of archive contents is
+returned invisibly and a message comparing sizes is printed. If \code{FALSE},
+the uncompressed size of all contents is returned as a numeric \code{fs_bytes}
+vector.}
 }
 \description{
 \code{\link[=zip_info]{zip_info()}} is the equivalent to the \code{unzip -l} command. It returns a data
