@@ -26,3 +26,7 @@ local directory.
 within the bucket as a named \code{fs_path} character vector, like
 \code{\link[fs:dir_ls]{fs::dir_ls()}}) returns files in a local directory.
 }
+\examples{
+aws_info("1000genomes", max = 10)
+aws_ls("irs-form-990", max = 1)
+}

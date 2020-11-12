@@ -13,6 +13,9 @@
 #' @param prefix Character string that limits the response to keys that begin
 #'   with the specified prefix.
 #' @param ... Additional arguments passed to [aws.s3::s3HTTP()].
+#' @examples
+#' aws_info("1000genomes", max = 10)
+#' aws_ls("irs-form-990", max = 1)
 #' @importFrom aws.s3 get_bucket_df
 #' @importFrom fs as_fs_path as_fs_bytes
 #' @importFrom readr parse_datetime
