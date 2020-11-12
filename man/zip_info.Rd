@@ -12,7 +12,7 @@ zip_ls(path, method = "internal")
 \arguments{
 \item{path}{A character vector of zip archives.}
 
-\item{method}{The method to be used. Passed to \code{\link[=unizp]{unizp()}}. An
+\item{method}{The method to be used. Passed to \code{utils::unizp()}. An
 alternative is to use \code{getOption("unzip")}.}
 }
 \description{
@@ -20,7 +20,7 @@ alternative is to use \code{getOption("unzip")}.}
 frame (like \code{\link[fs:dir_ls]{fs::dir_info()}}).
 
 \code{\link[=zip_ls]{zip_ls()}} also uses \code{unzip -l} but only returns the filenames within the
-archive as a named \code{fs_path} character vector (like \code{\link[=fs:dir_ls]{fs:dir_ls()}}).
+archive as a named \code{fs_path} character vector (like \code{\link[fs:dir_ls]{fs::dir_ls()}}).
 }
 \examples{
 # List two files from zip

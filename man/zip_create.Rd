@@ -36,7 +36,7 @@ The path of the created archive (invisibly).
 }
 \description{
 A wrapper for an external \code{zip} command to create zip archives. Unlike
-\code{\link[=zip]{zip()}}, filepaths can be passed into the first argument with \verb{\%>\%}.
+\code{\link[utils:zip]{utils::zip()}}, filepaths can be passed into the first argument with \verb{\%>\%}.
 }
 \examples{
 \dontshow{.old_wd <- setwd(tempdir())}

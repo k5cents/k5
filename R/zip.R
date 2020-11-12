@@ -5,10 +5,10 @@
 #' frame (like [fs::dir_info()]).
 #'
 #' [zip_ls()] also uses `unzip -l` but only returns the filenames within the
-#' archive as a named `fs_path` character vector (like [fs:dir_ls()]).
+#' archive as a named `fs_path` character vector (like [fs::dir_ls()]).
 #'
 #' @param path A character vector of zip archives.
-#' @param method The method to be used. Passed to [unizp()]. An
+#' @param method The method to be used. Passed to `utils::unizp()`. An
 #'   alternative is to use `getOption("unzip")`.
 #' @examples
 #' # List two files from zip
@@ -53,11 +53,11 @@ zip_ls <- function(path, method = "internal") {
 
 #' Extract zip contents
 #'
-#' @description
 #' Decompress the contents of a zip archive and extract them to a single
-#' directory so they can be read. Compared to [unzip()], a directory _must_ be
-#' provided in the `dir` directory; files are not automatically extracted to the
-#' current working directory. New file paths are returned invisibly.
+#' directory so they can be read. Compared to [utils::unzip()], a directory
+#' _must_ be provided in the `dir` directory; files are not automatically
+#' extracted to the current working directory. New file paths are returned
+#' invisibly.
 #'
 #' @param path A character vector of zip archives.
 #' @param dir The directory to extract files to (the equivalent of `unzip -d`).
@@ -105,7 +105,7 @@ zip_move <- function(path, dir = NULL, files = NULL, overwrite = TRUE,
 #' Create zip archive
 #'
 #' A wrapper for an external `zip` command to create zip archives. Unlike
-#' [zip()], filepaths can be passed into the first argument with `%>%`.
+#' [utils::zip()], filepaths can be passed into the first argument with `%>%`.
 #'
 #' @param path A character vector of files to archive.
 #' @param zip The path of the zip file to create. If none is supplied, and only
