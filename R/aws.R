@@ -9,7 +9,9 @@
 #' within the bucket as a named `fs_path` character vector, like
 #' [fs::dir_ls()]) returns files in a local directory.
 #'
-#' @param bucket Character string with the name of the bucket.
+#' @param bucket Character string with the name of the bucket. If you use the
+#'   same bucket frequently, you can set a default through an option named
+#'   that can be retrieved with `getOption("aws.bucket")`.
 #' @param prefix Character string that limits the response to keys that begin
 #'   with the specified prefix.
 #' @param ... Additional arguments passed to [aws.s3::s3HTTP()].
@@ -21,7 +23,7 @@
 #' @importFrom readr parse_datetime
 #' @importFrom tibble as_tibble
 #' @export
-aws_info <- function(bucket = getOption("bucket"), prefix = NULL, ...) {
+aws_info <- function(bucket = getOption("aws.bucket"), prefix = NULL, ...) {
   stopifnot(!is.null(bucket))
   z <- aws.s3::get_bucket_df(bucket = bucket, prefix = prefix, ...)
   z$path <- fs::as_fs_path(z$Key)
