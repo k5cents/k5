@@ -57,14 +57,12 @@ for (i in seq_along(t)) {
   n <- runif(1, 100, 1000)
   write_lines(rnorm(n), t[i])
 }
-sum(file_size(t))
 z <- file_temp(ext = "zip")
-t %>% # can easily pipe zip
+t %>% # can easily pipe into
   zip_create(z, junk = FALSE)
-zip_ls(z)
-file_size(z)
-o <- zip_move(z, path_temp("test"))
-sum(file_size(o))
+zip_info(z)
+zip_size(z)
+zip_move(z, tempdir())
 ```
 
 <!-- refs: start -->

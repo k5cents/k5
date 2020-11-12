@@ -48,25 +48,21 @@ for (i in seq_along(t)) {
   n <- runif(1, 100, 1000)
   write_lines(rnorm(n), t[i])
 }
-sum(file_size(t))
-#> 44.2K
 z <- file_temp(ext = "zip")
-t %>% # can easily pipe zip
+t %>% # can easily pipe into
   zip_create(z, junk = FALSE)
-zip_ls(z)
+zip_info(z)
 #> # A tibble: 5 x 3
 #>   path                        size date               
 #>   <fs::path>           <fs::bytes> <dttm>             
-#> 1 tmp/RtmpAT2cmv/A.txt      15.07K 2020-11-11 19:35:00
-#> 2 tmp/RtmpAT2cmv/B.txt       9.77K 2020-11-11 19:35:00
-#> 3 tmp/RtmpAT2cmv/C.txt       4.09K 2020-11-11 19:35:00
-#> 4 tmp/RtmpAT2cmv/D.txt       12.3K 2020-11-11 19:35:00
-#> 5 tmp/RtmpAT2cmv/E.txt       2.94K 2020-11-11 19:35:00
-file_size(z)
-#> 22.4K
-o <- zip_move(z, path_temp("test"))
-sum(file_size(o))
-#> 44.2K
+#> 1 tmp/RtmphLoifR/A.txt       8.66K 2020-11-12 16:58:00
+#> 2 tmp/RtmphLoifR/B.txt      15.01K 2020-11-12 16:58:00
+#> 3 tmp/RtmphLoifR/C.txt      13.71K 2020-11-12 16:58:00
+#> 4 tmp/RtmphLoifR/D.txt      13.76K 2020-11-12 16:58:00
+#> 5 tmp/RtmphLoifR/E.txt       2.63K 2020-11-12 16:58:00
+zip_size(z)
+#> deflated: 53.8K, compressed: 27K (50.27%)
+zip_move(z, tempdir())
 ```
 
 <!-- refs: start -->
