@@ -1,9 +1,15 @@
 #' List all objects in an AWS bucket
 #'
-#' Uses [aws.s3::get_bucket_df()] styled as an 'fs' data frame.
+#' @description
+#' [aws_info()] uses [aws.s3::get_bucket_df()] to return a tibble of stored
+#' objects in a remote bucket, like [fs::dir_info()] returns information on a
+#' local directory.
 #'
-#' @param bucket Character string with the name of the bucket, or an object of
-#'   class “s3_bucket”.
+#' [aws_ls()] also uses [aws.s3::get_bucket_df()] but only returns the filenames
+#' within the bucket as a named `fs_path` character vector, like
+#' [fs::dir_ls()]) returns files in a local directory.
+#'
+#' @param bucket Character string with the name of the bucket.
 #' @param prefix Character string that limits the response to keys that begin
 #'   with the specified prefix.
 #' @param ... Additional arguments passed to [aws.s3::s3HTTP()].
@@ -12,11 +18,31 @@
 #' @importFrom readr parse_datetime
 #' @importFrom tibble as_tibble
 #' @export
-aws_ls <- function(bucket = getOption("bucket"), prefix = NULL, ...) {
+aws_info <- function(bucket = getOption("bucket"), prefix = NULL, ...) {
   stopifnot(!is.null(bucket))
   z <- aws.s3::get_bucket_df(bucket = bucket, prefix = prefix, ...)
   z$path <- fs::as_fs_path(z$Key)
+  z$type <- ifelse(z$Size == 0, 2L, 5L)
+  z$type <- factor(z$type, levels = file_types, labels = names(file_types))
   z$size <- fs::as_fs_bytes(z$Size)
   z$time <- readr::parse_datetime(z$LastModified)
-  tibble::as_tibble(z[, c("path", "size", "time")])
+  tibble::as_tibble(z[, c("path", "type", "size", "time")])
 }
+
+#' @rdname aws_info
+#' @export
+aws_ls <- function(bucket = getOption("bucket"), prefix = NULL, ...) {
+  z <- aws.s3::get_bucket_df(bucket = bucket, prefix = prefix, ...)
+  fs::as_fs_path(z$Key)
+}
+
+file_types <- c(
+  "any" = -1,
+  "block_device" = 0L,
+  "character_device" = 1L,
+  "directory" = 2L,
+  "FIFO" = 3L,
+  "symlink" = 4L,
+  "file" = 5L,
+  "socket" = 6L
+)
