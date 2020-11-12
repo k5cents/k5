@@ -59,11 +59,11 @@ zip_ls <- function(path, method = "internal") {
 #'   vector.
 #' @export
 zip_size <- function(path, sum = TRUE, method = "internal") {
-  c <- fs::file_size(path)
   b <- zip_info(path, method = method)
+  c <- fs::file_size(path)
   d <- sum(b$size)
   if (sum) {
-    diff <- scales::percent(a/c, 0.01)
+    diff <- scales::percent(c/d, 0.01)
     cat(glue::glue("deflated: {d}, compressed: {c} ({diff})"))
     return(invisible(c))
   } else {

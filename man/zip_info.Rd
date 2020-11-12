@@ -38,6 +38,7 @@ mtc <- tempfile(fileext = ".csv")
 write.csv(mtcars, mtc)
 zzp <- tempfile(fileext = ".zip")
 zip_create(c(irs, mtc), zzp, junk = TRUE)
+zip_size(zzp)
 zip_info(zzp)
 zip_ls(zzp)
 }
