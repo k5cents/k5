@@ -1,6 +1,6 @@
 Package: k5
 Title: Kiernan Nicholls Miscellaneous
-Version: 0.0.0.9000
+Version: 0.0.0.9001
 Authors@R: 
     person(given = "Kiernan",
            family = "Nicholls",
@@ -21,6 +21,7 @@ Imports:
     usethis (>= 1.6.3),
     utils
 Suggests: 
+    covr (>= 3.5.1),
     testthat (>= 3.0.0)
 Encoding: UTF-8
 LazyData: true
