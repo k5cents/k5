@@ -12,7 +12,7 @@ zip_ls(path, method = "internal")
 \arguments{
 \item{path}{A character vector of zip archives.}
 
-\item{method}{The method to be used. Passed to \code{\link[utils:unizp]{utils::unizp()}}. An
+\item{method}{The method to be used. Passed to \code{\link[=unizp]{unizp()}}. An
 alternative is to use \code{getOption("unzip")}.}
 }
 \description{
