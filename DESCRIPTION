@@ -18,11 +18,11 @@ Imports:
     readr (>= 1.4.0),
     scales (>= 1.1.1),
     tibble (>= 3.0.4),
-    usethis (>= 1.6.3),
     utils
 Suggests: 
     covr (>= 3.5.1),
-    testthat (>= 3.0.0)
+    testthat (>= 3.0.0),
+    usethis (>= 1.6.3)
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)

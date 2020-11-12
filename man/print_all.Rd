@@ -10,14 +10,15 @@ print_all(x, ask = TRUE)
 \item{x}{Object to print, typically a data frame or vector.}
 
 \item{ask}{If the length of \code{x} exceeds \code{getOption("max.print")}, should the
-user be promoted to print everything. If \code{FALSE}, the maximum is printed
-without double checking; this can be \strong{extremelly} slow.}
+user be promoted confirm their intention to print everything. If \code{FALSE},
+the maximum is printed without double checking: this can be \strong{extremelly}
+slow. The 'usethis' package must be installed for interactive confirmation.}
 }
 \value{
 The object x (invisibly)
 }
 \description{
 Print up to the \code{getOption("max.print")} and ask the user if they want to
-print more than that. For tibbles and data frames, use \code{\link[=nrow]{nrow()}} rather than
-\code{\link[=length]{length()}}.
+print more than that. This is most useful when printing tibbles with more
+than 10 rows but less than \code{getOption("max.print")}.
 }

@@ -1,13 +1,14 @@
 #' Print all rows of elements
 #'
 #' Print up to the `getOption("max.print")` and ask the user if they want to
-#' print more than that. For tibbles and data frames, use [nrow()] rather than
-#' [length()].
+#' print more than that. This is most useful when printing tibbles with more
+#' than 10 rows but less than `getOption("max.print")`.
 #'
 #' @param x Object to print, typically a data frame or vector.
 #' @param ask If the length of `x` exceeds `getOption("max.print")`, should the
-#'   user be promoted to print everything. If `FALSE`, the maximum is printed
-#'   without double checking; this can be **extremelly** slow.
+#'   user be promoted confirm their intention to print everything. If `FALSE`,
+#'   the maximum is printed without double checking: this can be **extremelly**
+#'   slow. The 'usethis' package must be installed for interactive confirmation.
 #' @return The object x (invisibly)
 #' @export
 print_all <- function(x, ask = TRUE) {
@@ -18,11 +19,15 @@ print_all <- function(x, ask = TRUE) {
   if (n > max) {
     sure <- !ask
     if (ask && interactive()) {
-      sure <- usethis::ui_yeah(
-        x = "Length of x exceedes {usethis::ui_code('getOption(\"max.print\")')}",
-        yes = glue::glue("Print all: {scales::comma(n)}"),
-        no = glue::glue("Print max: {scales::comma(max)}")
-      )
+      if (is_installed("usethis")) {
+        sure <- usethis::ui_yeah(
+          x = "Length exceedes {usethis::ui_code('getOption(\"max.print\")')}",
+          yes = glue::glue("Print {crayon::red('all')}: {scales::comma(n)}"),
+          no = glue::glue("Print max: {scales::comma(max)}")
+        )
+      } else {
+        stop("Package \"usethis\" needed for confirmation", call. = FALSE)
+      }
     }
     if (sure && is_tbl) {
       print(x, n = Inf)
