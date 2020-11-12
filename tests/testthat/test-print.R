@@ -1,4 +1,6 @@
+old_max <- getOption("max.print")
 max <- 1000
+options(max.print = max)
 x <- data.frame(
   state = sample(state.name, size = max + 1, replace = TRUE),
   x = rnorm(n = max + 1),
@@ -6,6 +8,8 @@ x <- data.frame(
   z = rep(rivers, length.out = max + 1)
 )
 y <- x[seq((max/2)), ]
+a <- tibble::as_tibble(x)
+b <- tibble::as_tibble(y)
 
 test_that("printing all of long data frame", {
   # should print
@@ -16,7 +20,6 @@ test_that("printing all of long data frame", {
 })
 
 test_that("printing all of long tibble", {
-  a <- tibble::as_tibble(x)
   # should print
   expect_output(print_all(a, ask = FALSE), NULL)
   # prints all rows plus header and footer
@@ -33,10 +36,11 @@ test_that("printing all short data frame", {
 })
 
 test_that("printing all short tibble", {
-  b <- tibble::as_tibble(y)
   # should print
   expect_output(print_all(b, ask = FALSE), NULL)
   # prints all rows plus header and footer
   l <- capture_output_lines(print_all(b, ask = FALSE))
   expect_length(l, nrow(b) + 3)
 })
+
+options(max.print = old_max)

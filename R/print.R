@@ -40,6 +40,6 @@ print_all <- function(x, ask = TRUE) {
   if (is_tbl) {
     print(x, n = max)
   } else if (!is_tbl) {
-    print(x, max = max)
+    print(x, max = max * 2)
   }
 }
