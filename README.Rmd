@@ -28,14 +28,14 @@ if (!interactive()) {
 [![R build status][ga_badge]][ga_link]
 <!-- badges: end -->
 
-The goal of k5 is to offer miscellaneous quality of life functions used by
-[Kiernan Nicholls][kn] (aka _k5cents_) during interactive R coding. A lot of
-these functions offer simple extensions and improvements to bring commonly used
-functions more in like with [tidyverse] style.
+The goal of 'k5' is to offer miscellaneous quality of life functions used by
+[Kiernan Nicholls][kn] (aka _k5cents_) during interactive R coding. Many these
+functions offer simple  changes to bring commonly used functions more in line
+with [tidyverse] style.
 
 ## Installation
 
-You can install the development version of k5 from [GitHub][gh]:
+You can install the development version of 'k5' from [GitHub][gh]:
 
 ```{r install_github, eval=FALSE}
 # install.packages("remotes")
@@ -50,9 +50,9 @@ library(k5)
 library(readr)
 ```
 
-The `zip_*()` functions take `zip()`/`unzip()` but return data like `dir_ls()`.
+The `zip_*()` functions use `zip()` & `unzip()` but return data like `dir_ls()`.
 
-```{r zip_fs}
+```{r zip}
 t <- path_temp(LETTERS[1:5], ext = "txt")
 for (i in seq_along(t)) {
   n <- runif(1, 100, 1000)
@@ -78,7 +78,7 @@ sum(file_size(o))
 [cov_badge]: https://codecov.io/gh/kiernann/k5/branch/master/graph/badge.svg
 [cov_link]: https://codecov.io/gh/kiernann/k5?branch=master
 [dl_badge]: https://cranlogs.r-pkg.org/badges/grand-total/k5
-[tidyvere]: https://www.tidyverse.org/
+[tidyverse]: https://www.tidyverse.org/
 [gh]: https://github.com/kiernann/k5
 [kn]: https://github.com/kiernann
 <!-- refs: end -->
