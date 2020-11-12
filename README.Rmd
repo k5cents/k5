@@ -1,0 +1,84 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  warning = FALSE,
+  message = FALSE,
+  error = FALSE,
+  comment = "#>",
+  fig.path = "man/figures/README-"
+)
+if (!interactive()) {
+  options(width = 99)
+}
+```
+
+# k5
+
+<!-- badges: start -->
+[![Lifecycle: experimental][life_badge]][life_link]
+[![CRAN status][cran_badge]][cran_link]
+![Downloads][dl_badge]
+[![Codecov test coverage][cov_badge]][cov_link]
+[![R build status][ga_badge]][ga_link]
+<!-- badges: end -->
+
+The goal of k5 is to offer miscellaneous quality of life functions used by
+[Kiernan Nicholls][kn] (aka _k5cents_) during interactive R coding. A lot of
+these functions offer simple extensions and improvements to bring commonly used
+functions more in like with [tidyverse] style.
+
+## Installation
+
+You can install the development version of k5 from [GitHub][gh]:
+
+```{r install_github, eval=FALSE}
+# install.packages("remotes")
+remotes::install_github("kiernann/k5")
+```
+
+## Example
+
+```{r lib}
+library(fs)
+library(k5)
+library(readr)
+```
+
+The `zip_*()` functions take `zip()`/`unzip()` but return data like `dir_ls()`.
+
+```{r zip_fs}
+t <- path_temp(LETTERS[1:5], ext = "txt")
+for (i in seq_along(t)) {
+  n <- runif(1, 100, 1000)
+  write_lines(rnorm(n), t[i])
+}
+sum(file_size(t))
+z <- file_temp(ext = "zip")
+t %>% # can easily pipe zip
+  zip_create(z, junk = TRUE)
+zip_ls(z)
+file_size(z)
+o <- zip_move(z, path_temp("test"))
+sum(file_size(o))
+```
+
+<!-- refs: start -->
+[life_badge]: https://img.shields.io/badge/lifecycle-maturing-blue.svg
+[life_link]: https://www.tidyverse.org/lifecycle/#maturing
+[cran_badge]: https://www.r-pkg.org/badges/version/k5
+[cran_link]: https://CRAN.R-project.org/package=k5
+[ga_badge]: https://github.com/kiernann/k5/workflows/R-CMD-check/badge.svg
+[ga_link]: https://github.com/kiernann/k5/actions
+[cov_badge]: https://codecov.io/gh/kiernann/k5/branch/master/graph/badge.svg
+[cov_link]: https://codecov.io/gh/kiernann/k5?branch=master
+[dl_badge]: https://cranlogs.r-pkg.org/badges/grand-total/k5
+[tidyvere]: https://www.tidyverse.org/
+[gh]: https://github.com/kiernann/k5
+[kn]: https://github.com/kiernann
+<!-- refs: end -->
