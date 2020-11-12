@@ -1,6 +1,6 @@
 Package: k5
 Title: Kiernan Nicholls Miscellaneous
-Version: 0.0.0.9001
+Version: 0.0.0.9002
 Authors@R: 
     person(given = "Kiernan",
            family = "Nicholls",

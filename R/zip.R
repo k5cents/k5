@@ -1,13 +1,15 @@
 #' List zip contents
 #'
-#' Equivalent to the `unzip -l` command. It returns the compressed files within
-#' the given archives, much like [dir_ls()] returns files in a directory. If
-#' more than one archive is provided, files are identified by their source.
+#' @description
+#' [zip_info()] is the equivalent to the `unzip -l` command. It returns a data
+#' frame (like [fs::dir_info()]).
+#'
+#' [zip_ls()] also uses `unzip -l` but only returns the filenames within the
+#' archive as a named `fs_path` character vector (like [fs:dir_ls()]).
 #'
 #' @param path A character vector of zip archives.
-#' @param method The method to be used. An alternative is to use
-#'   `getOption("unzip")`, which on a Unix-alike may be set to the path to a
-#'   unzip program.
+#' @param method The method to be used. Passed to [utils::unizp()]. An
+#'   alternative is to use `getOption("unzip")`.
 #' @examples
 #' # List two files from zip
 #' irs <- tempfile(fileext = ".csv")
@@ -16,12 +18,13 @@
 #' write.csv(mtcars, mtc)
 #' zzp <- tempfile(fileext = ".zip")
 #' zip_create(c(irs, mtc), zzp, junk = TRUE)
+#' zip_info(zzp)
 #' zip_ls(zzp)
 #' @importFrom fs path_real as_fs_path as_fs_bytes
 #' @importFrom utils unzip
 #' @importFrom tibble as_tibble
 #' @export
-zip_ls <- function(path, method = "internal") {
+zip_info <- function(path, method = "internal") {
   path <- fs::path_real(path)
   z <- mapply(
     FUN = utils::unzip, zipfile = path,
@@ -35,8 +38,22 @@ zip_ls <- function(path, method = "internal") {
   tibble::as_tibble(z)
 }
 
+#' @rdname zip_info
+#' @export
+zip_ls <- function(path, method = "internal") {
+  path <- fs::path_real(path)
+  z <- mapply(
+    FUN = utils::unzip, zipfile = path,
+    SIMPLIFY = FALSE, USE.NAMES = TRUE,
+    MoreArgs = list(list = TRUE)
+  )
+  z <- do.call(what = "rbind", args = z)
+  fs::as_fs_path(z$Name)
+}
+
 #' Extract zip contents
 #'
+#' @description
 #' Decompress the contents of a zip archive and extract them to a single
 #' directory so they can be read. Compared to [utils::unzip()], a directory
 #' _must_ be provided in the `dir` directory; files are not automatically
