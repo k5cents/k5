@@ -105,3 +105,16 @@ test_that("zip extract fails without dir", {
   expect_error(zip_move(z))
   unlink(c(t, z))
 })
+
+test_that("example zip paths are returned", {
+  skip_if_not_installed("k5")
+  x <- zip_example(TRUE)
+  expect_length(x, 1)
+  expect_s3_class(x, "fs_path")
+  expect_equal(path_ext(x), "zip")
+  y <- zip_example(FALSE)
+  expect_length(y, 1)
+  expect_equal(path_ext(y), "csv")
+  z <- zip_example(NULL)
+  expect_length(z, 2)
+})

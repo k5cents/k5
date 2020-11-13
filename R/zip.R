@@ -162,3 +162,28 @@ zip_create <- function(path, zip = NULL, quiet = TRUE, junk = FALSE,
   utils::zip(zipfile = zip, files = path, zip = method, extra = c(extra, x))
   invisible(zip)
 }
+
+#' Get path to k5 example
+#'
+#' k5 comes bundled with a number of sample files in its `inst/extdata`
+#' directory. This function make them easy to access. The two files are regular
+#' and compressed versions of a delimited file containing the mtcars data.
+#'
+#' @param zip If `TRUE` (default), the path to the compressed version is
+#'   returned. If `FALSE`, the uncompressed version. If `NULL`, the example
+#'   file names (not paths) will be listed.
+#' @examples
+#' zip_example()
+#' zip_example(NULL)
+#' @return If `zip` is not `NULL`, the `fs_path` to the system file.
+#' @export
+zip_example <- function(zip = TRUE) {
+  out <- if (is.null(zip)) {
+    dir(system.file("extdata", package = "k5"))
+  } else if (zip) {
+    system.file("extdata", "mtcars.csv.zip", package = "k5", mustWork = TRUE)
+  } else {
+    system.file("extdata", "mtcars.csv", package = "k5", mustWork = TRUE)
+  }
+  fs::as_fs_path(out)
+}
