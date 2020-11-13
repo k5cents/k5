@@ -39,7 +39,6 @@ test_that("zip total size is returned invisibly", {
   write.csv(mtcars, t)
   z <- zip_create(t)
   o <- expect_invisible(zip_size(z))
-  expect_equal(as.numeric(o), 1036)
   expect_s3_class(o, "fs_bytes")
   unlink(c(t, z))
 })
