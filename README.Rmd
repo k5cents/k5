@@ -29,8 +29,7 @@ if (!interactive()) {
 
 The goal of 'k5' is to offer miscellaneous quality of life functions used by
 [Kiernan Nicholls][kn] during interactive programming. Many of the functions
-offer simple changes to bring commonly used functions more in line with the
-[tidyverse] style.
+simply to bring commonly used functions more in line with the [tidyverse] style.
 
 ## Installation
 

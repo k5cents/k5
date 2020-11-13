@@ -17,8 +17,8 @@ status](https://github.com/kiernann/k5/workflows/R-CMD-check/badge.svg)](https:/
 
 The goal of ‘k5’ is to offer miscellaneous quality of life functions
 used by [Kiernan Nicholls](https://github.com/kiernann) during
-interactive programming. Many of the functions offer simple changes to
-bring commonly used functions more in line with the
+interactive programming. Many of the functions simply to bring commonly
+used functions more in line with the
 [tidyverse](https://www.tidyverse.org/) style.
 
 ## Installation
@@ -55,13 +55,13 @@ zip_info(z)
 #> # A tibble: 5 x 3
 #>   path                        size date               
 #>   <fs::path>           <fs::bytes> <dttm>             
-#> 1 tmp/RtmphLoifR/A.txt       8.66K 2020-11-12 16:58:00
-#> 2 tmp/RtmphLoifR/B.txt      15.01K 2020-11-12 16:58:00
-#> 3 tmp/RtmphLoifR/C.txt      13.71K 2020-11-12 16:58:00
-#> 4 tmp/RtmphLoifR/D.txt      13.76K 2020-11-12 16:58:00
-#> 5 tmp/RtmphLoifR/E.txt       2.63K 2020-11-12 16:58:00
+#> 1 tmp/RtmpdD6G9O/A.txt      14.85K 2020-11-12 19:41:00
+#> 2 tmp/RtmpdD6G9O/B.txt       12.3K 2020-11-12 19:41:00
+#> 3 tmp/RtmpdD6G9O/C.txt       7.57K 2020-11-12 19:41:00
+#> 4 tmp/RtmpdD6G9O/D.txt      15.88K 2020-11-12 19:41:00
+#> 5 tmp/RtmpdD6G9O/E.txt       6.25K 2020-11-12 19:41:00
 zip_size(z)
-#> deflated: 53.8K, compressed: 27K (50.27%)
+#> deflated: 56.9K, compressed: 28.5K (50.12%)
 zip_move(z, tempdir())
 ```
 
