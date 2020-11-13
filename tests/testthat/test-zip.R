@@ -33,6 +33,43 @@ test_that("zip contents can be listed", {
   unlink(c(t, z, o))
 })
 
+test_that("zip total size is returned invisibly", {
+  skip_if_not_installed("utils")
+  t <- file_temp("mtcars", ext = "csv")
+  write.csv(mtcars, t)
+  z <- zip_create(t)
+  o <- expect_invisible(zip_size(z))
+  expect_equal(as.numeric(o), 1036)
+  expect_s3_class(o, "fs_bytes")
+  unlink(c(t, z))
+})
+
+test_that("zip total size comparrison is displayed", {
+  skip_if_not_installed("utils")
+  t <- file_temp("mtcars", ext = "csv")
+  write.csv(mtcars, t)
+  z <- zip_create(t)
+  expect_output(
+    object = zip_size(z),
+    regexp = "deflated: .*, compressed: .* (.*%)"
+  )
+  unlink(c(t, z))
+})
+
+
+test_that("vector of zip content sizes is returned", {
+  skip_if_not_installed("utils")
+  t1 <- file_temp("mtcars", ext = "csv")
+  write.csv(mtcars, t1)
+  t2 <- file_temp("iris", ext = "csv")
+  write.csv(iris, t2)
+  z <- zip_create(c(t1, t2), file_temp(ext = "zip"))
+  o <- zip_size(z, sum = FALSE)
+  expect_length(o, 2)
+  expect_s3_class(o, "fs_bytes")
+  unlink(c(t1, t2, z))
+})
+
 test_that("multiple zips can be listed", {
   skip_if_not_installed("utils")
   t1 <- file_temp("mtcars", ext = "csv")
