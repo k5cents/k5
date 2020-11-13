@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# k5
+# k5 <img src='man/figures/logo.png' align="right" height="139" />
 
 <!-- badges: start -->
 
@@ -43,11 +43,6 @@ The `zip_*()` functions use `utils::zip()` but return data like
 `fs::file_*()`.
 
 ``` r
-t <- path_temp(LETTERS[1:5], ext = "txt")
-for (i in seq_along(t)) {
-  n <- runif(1, 100, 1000)
-  write_lines(rnorm(n), t[i])
-}
 z <- file_temp(ext = "zip")
 t %>% # can easily pipe into
   zip_create(z, junk = FALSE)
@@ -55,14 +50,31 @@ zip_info(z)
 #> # A tibble: 5 x 3
 #>   path                        size date               
 #>   <fs::path>           <fs::bytes> <dttm>             
-#> 1 tmp/RtmpdD6G9O/A.txt      14.85K 2020-11-12 19:41:00
-#> 2 tmp/RtmpdD6G9O/B.txt       12.3K 2020-11-12 19:41:00
-#> 3 tmp/RtmpdD6G9O/C.txt       7.57K 2020-11-12 19:41:00
-#> 4 tmp/RtmpdD6G9O/D.txt      15.88K 2020-11-12 19:41:00
-#> 5 tmp/RtmpdD6G9O/E.txt       6.25K 2020-11-12 19:41:00
+#> 1 tmp/RtmpsYA89A/A.txt      17.15K 2020-11-12 21:59:00
+#> 2 tmp/RtmpsYA89A/B.txt      15.36K 2020-11-12 21:59:00
+#> 3 tmp/RtmpsYA89A/C.txt        5.5K 2020-11-12 21:59:00
+#> 4 tmp/RtmpsYA89A/D.txt       8.44K 2020-11-12 21:59:00
+#> 5 tmp/RtmpsYA89A/E.txt       2.21K 2020-11-12 21:59:00
 zip_size(z)
-#> deflated: 56.9K, compressed: 28.5K (50.12%)
+#> deflated: 48.6K, compressed: 24.5K (50.36%)
 zip_move(z, tempdir())
+```
+
+Compare this to the output of the `utils::unzip()` and other base
+versions.
+
+``` r
+zip(z, t)
+file.size(z)
+#> [1] 25086
+unzip(z, list = TRUE)
+#>                   Name Length                Date
+#> 1 tmp/RtmpsYA89A/A.txt  17557 2020-11-12 21:59:00
+#> 2 tmp/RtmpsYA89A/B.txt  15724 2020-11-12 21:59:00
+#> 3 tmp/RtmpsYA89A/C.txt   5627 2020-11-12 21:59:00
+#> 4 tmp/RtmpsYA89A/D.txt   8643 2020-11-12 21:59:00
+#> 5 tmp/RtmpsYA89A/E.txt   2264 2020-11-12 21:59:00
+unzip(z, exdir = tempdir())
 ```
 
 <!-- refs: start -->

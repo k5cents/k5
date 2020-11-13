@@ -14,11 +14,11 @@ knitr::opts_chunk$set(
   fig.path = "man/figures/README-"
 )
 if (!interactive()) {
-  options(width = 99)
+  # options(width = 99)
 }
 ```
 
-# k5
+# k5 <img src='man/figures/logo.png' align="right" height="139" />
 
 <!-- badges: start -->
 [![Lifecycle: experimental][life_badge]][life_link]
@@ -50,18 +50,30 @@ library(readr)
 
 The `zip_*()` functions use `utils::zip()` but return data like `fs::file_*()`.
 
-```{r zip}
+```{r temp, echo=FALSE}
 t <- path_temp(LETTERS[1:5], ext = "txt")
 for (i in seq_along(t)) {
   n <- runif(1, 100, 1000)
   write_lines(rnorm(n), t[i])
 }
+```
+
+```{r zip}
 z <- file_temp(ext = "zip")
 t %>% # can easily pipe into
   zip_create(z, junk = FALSE)
 zip_info(z)
 zip_size(z)
 zip_move(z, tempdir())
+```
+
+Compare this to the output of the `utils::unzip()` and other base versions.
+
+```{r base}
+zip(z, t)
+file.size(z)
+unzip(z, list = TRUE)
+unzip(z, exdir = tempdir())
 ```
 
 <!-- refs: start -->
