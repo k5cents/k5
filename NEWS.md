@@ -5,6 +5,7 @@
 * Added `zip_size()` to compare compressed sizes of archives.
 * Changed `zip_ls()` to `zip_info()` to match `fs::dir_info()`.
 * New `zip_ls()` added to take filenames from `zip_info()` like `fs::dir_ls()`.
+* Added `write_last()` to write some common `.Last.value` types to disk.
 
 # k5 0.0.0.9001
 
