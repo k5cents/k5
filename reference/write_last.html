@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>List zip contents — zip_info • k5</title>
+<title>Write the last value to disk — write_last • k5</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,11 +46,9 @@
 
 
 
-<meta property="og:title" content="List zip contents — zip_info" />
-<meta property="og:description" content="zip_info() is the equivalent to the unzip -l command. It returns a data
-frame (like fs::dir_info()).
-zip_ls() also uses unzip -l but only returns the filenames within the
-archive as a named fs_path character vector (like fs::dir_ls())." />
+<meta property="og:title" content="Write the last value to disk — write_last" />
+<meta property="og:description" content="The value of the internal evaluation of a top-level R expression is always
+assigned to .Last.value before further processing (e.g., printing)." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -122,62 +120,44 @@ archive as a named fs_path character vector (like fs::dir_ls())." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>List zip contents</h1>
-    <small class="dont-index">Source: <a href='https://github.com/kiernann/k5/blob/master/R/zip.R'><code>R/zip.R</code></a></small>
-    <div class="hidden name"><code>zip_info.Rd</code></div>
+    <h1>Write the last value to disk</h1>
+    <small class="dont-index">Source: <a href='https://github.com/kiernann/k5/blob/master/R/write-last.R'><code>R/write-last.R</code></a></small>
+    <div class="hidden name"><code>write_last.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><code>zip_info()</code> is the equivalent to the <code>unzip -l</code> command. It returns a data
-frame (like <code><a href='http://fs.r-lib.org/reference/dir_ls.html'>fs::dir_info()</a></code>).</p>
-<p><code>zip_ls()</code> also uses <code>unzip -l</code> but only returns the filenames within the
-archive as a named <code>fs_path</code> character vector (like <code><a href='http://fs.r-lib.org/reference/dir_ls.html'>fs::dir_ls()</a></code>).</p>
+    <p>The value of the internal evaluation of a top-level R expression is always
+assigned to <code>.Last.value</code> before further processing (e.g., printing).</p>
     </div>
 
-    <pre class="usage"><span class='fu'>zip_info</span><span class='op'>(</span><span class='va'>path</span>, method <span class='op'>=</span> <span class='st'>"internal"</span><span class='op'>)</span>
-
-<span class='fu'>zip_ls</span><span class='op'>(</span><span class='va'>path</span>, method <span class='op'>=</span> <span class='st'>"internal"</span><span class='op'>)</span>
-
-<span class='fu'>zip_size</span><span class='op'>(</span><span class='va'>path</span>, sum <span class='op'>=</span> <span class='cn'>TRUE</span>, method <span class='op'>=</span> <span class='st'>"internal"</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>write_last</span><span class='op'>(</span>file <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>path</th>
-      <td><p>A character vector of zip archives.</p></td>
+      <th>file</th>
+      <td><p>File or connection to write to.</p></td>
     </tr>
     <tr>
-      <th>method</th>
-      <td><p>The method to be used. Passed to <code>utils::unizp()</code>. An
-alternative is to use <code><a href='https://rdrr.io/r/base/options.html'>getOption("unzip")</a></code>.</p></td>
-    </tr>
-    <tr>
-      <th>sum</th>
-      <td><p>If <code>TRUE</code> (default) the summed size of archive contents is
-returned invisibly and a message comparing sizes is printed. If <code>FALSE</code>,
-the uncompressed size of all contents is returned as a numeric <code>fs_bytes</code>
-vector.</p></td>
+      <th>...</th>
+      <td><p>Additional arguments passed to the function used to write.</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># List two files from zip</span>
-<span class='va'>irs</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span>fileext <span class='op'>=</span> <span class='st'>".csv"</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/utils/write.table.html'>write.csv</a></span><span class='op'>(</span><span class='va'>iris</span>, <span class='va'>irs</span><span class='op'>)</span>
-<span class='va'>mtc</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span>fileext <span class='op'>=</span> <span class='st'>".csv"</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/utils/write.table.html'>write.csv</a></span><span class='op'>(</span><span class='va'>mtcars</span>, <span class='va'>mtc</span><span class='op'>)</span>
-<span class='va'>zzp</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span>fileext <span class='op'>=</span> <span class='st'>".zip"</span><span class='op'>)</span>
-<span class='fu'><a href='zip_create.html'>zip_create</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>irs</span>, <span class='va'>mtc</span><span class='op'>)</span>, <span class='va'>zzp</span>, junk <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-<span class='fu'>zip_size</span><span class='op'>(</span><span class='va'>zzp</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; deflated: 6.45K, compressed: 2.18K (33.86%)</div><div class='input'><span class='fu'>zip_info</span><span class='op'>(</span><span class='va'>zzp</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 2 x 3</span><span>
-#&gt;   path                       size date               
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;fs::path&gt;</span><span>          </span><span style='color: #555555;font-style: italic;'>&lt;fs::bytes&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dttm&gt;</span><span>             
-#&gt; </span><span style='color: #555555;'>1</span><span> file5e76a361ee8.csv       4.71K 2020-11-19 </span><span style='color: #555555;'>21:49:00</span><span>
-#&gt; </span><span style='color: #555555;'>2</span><span> file5e772747d2.csv        1.74K 2020-11-19 </span><span style='color: #555555;'>21:49:00</span><span></div><div class='input'><span class='fu'>zip_ls</span><span class='op'>(</span><span class='va'>zzp</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; file5e76a361ee8.csv file5e772747d2.csv  </div></span></pre>
+    <p>The created file path, invisibly.</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Three types of files are written, based on object class:</p><ol>
+<li><p>For data frames, a tab-separated file via <code><a href='https://readr.tidyverse.org/reference/write_delim.html'>readr::write_tsv()</a></code>.</p></li>
+<li><p>For vectors, a new-line separated file via <code><a href='https://readr.tidyverse.org/reference/read_lines.html'>readr::write_lines()</a></code>.</p></li>
+<li><p>For ggplots, a raster image (by default) via <code><a href='https://ggplot2.tidyverse.org/reference/ggsave.html'>ggplot2::ggsave()</a></code>.</p></li>
+<li><p>For other lists, an uncompressed RDS file via <code><a href='https://readr.tidyverse.org/reference/read_rds.html'>readr::write_rds()</a></code>.</p></li>
+</ol>
+
+
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
