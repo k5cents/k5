@@ -8,6 +8,7 @@
 #' 2. For vectors, a newline-separated file via [readr::write_lines()].
 #' 3. For ggplots, a raster image (by default) via [ggplot2::ggsave()].
 #' 4. For other lists, an uncompressed RDS file via [readr::write_rds()].
+#' @param x The object to write, defaults to [.Last.value].
 #' @param file File or connection to write to.
 #' @param ... Additional arguments passed to the writing function (see Details).
 #' @return The created file path, invisibly.
@@ -53,19 +54,17 @@ write_last <- function(x = .Last.value, file = tempfile(), ...) {
     y <- capture.output(y)
     readr::write_lines(y[-length(y)], file)
     type <- "source code"
-  } else if (is.list(y)) {
+  } else {
     file <- fs::path_ext_set(file, "rds")
     readr::write_rds(y, file, ...)
     type <- "binary"
-  } else {
-    usethis::ui_stop("No known class, {usethis::ui_path(file)} not written")
   }
   if (fs::file_exists(file)) {
     usethis::ui_done(
       "Saved {usethis::ui_field(type)} file {usethis::ui_path(file)}"
     )
   } else {
-    usethis::ui_oops(
+    usethis::ui_stop(
       "Failed to save file {usethis::ui_path(file)}"
     )
   }

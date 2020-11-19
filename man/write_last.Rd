@@ -4,12 +4,14 @@
 \alias{write_last}
 \title{Write the last value to disk}
 \usage{
-write_last(file = tempfile(), ...)
+write_last(x = .Last.value, file = tempfile(), ...)
 }
 \arguments{
+\item{x}{The object to write, defaults to \link{.Last.value}.}
+
 \item{file}{File or connection to write to.}
 
-\item{...}{Additional arguments passed to the function used to write.}
+\item{...}{Additional arguments passed to the writing function (see Details).}
 }
 \value{
 The created file path, invisibly.
@@ -19,10 +21,10 @@ The value of the internal evaluation of a top-level R expression is always
 assigned to \code{.Last.value} before further processing (e.g., printing).
 }
 \details{
-Three types of files are written, based on object class:
+Four types of files are written, based on object class:
 \enumerate{
 \item For data frames, a tab-separated file via \code{\link[readr:write_delim]{readr::write_tsv()}}.
-\item For vectors, a new-line separated file via \code{\link[readr:read_lines]{readr::write_lines()}}.
+\item For vectors, a newline-separated file via \code{\link[readr:read_lines]{readr::write_lines()}}.
 \item For ggplots, a raster image (by default) via \code{\link[ggplot2:ggsave]{ggplot2::ggsave()}}.
 \item For other lists, an uncompressed RDS file via \code{\link[readr:read_rds]{readr::write_rds()}}.
 }

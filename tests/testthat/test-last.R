@@ -41,6 +41,10 @@ test_that("functions are saved as R source files", {
   expect_true(grepl("^function", z[1]))
 })
 
-test_that("other objects fail to save", {
-  expect_error(write_last(x = austres))
+test_that("all other objects are saved as rds", {
+  y <- write_last(x = austres)
+  expect_true(file_exists(y))
+  expect_error(z <- read_rds(y), NA)
+  expect_equal(class(z), class(austres))
+  expect_s3_class(z, "ts")
 })
