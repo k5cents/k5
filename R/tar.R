@@ -100,7 +100,7 @@ tar_ls <- function(path, method = "internal") {
 tar_size <- function(path, sum = TRUE, method = "tar") {
   b <- tar_info(path, method = method)
   c <- fs::file_size(path)
-  d <- sum(b$size)
+  d <- sum(b$size, na.rm = TRUE)
   if (sum) {
     diff <- scales::percent(c/d, 0.01)
     cat(glue::glue("deflated: {d}, compressed: {c} ({diff})"))

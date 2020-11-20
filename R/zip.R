@@ -61,7 +61,7 @@ zip_ls <- function(path, method = "internal") {
 zip_size <- function(path, sum = TRUE, method = "internal") {
   b <- zip_info(path, method = method)
   c <- fs::file_size(path)
-  d <- sum(b$size)
+  d <- sum(b$size, na.rm = TRUE)
   if (sum) {
     diff <- scales::percent(c/d, 0.01)
     cat(glue::glue("deflated: {d}, compressed: {c} ({diff})"))
