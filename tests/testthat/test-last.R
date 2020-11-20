@@ -4,13 +4,13 @@ library(fs)
 
 test_that("last images without ext are saved as png", {
   x <- ggplot(diamonds, aes(color)) + geom_bar()
-  y <- write_last(x)
+  y <- write_last(x = x)
   expect_true(file_exists(y))
 })
 
 test_that("last images are saved with custom dimmensions", {
   x <- ggplot(diamonds, aes(color)) + geom_bar()
-  y <- write_last(x, height = 5, width = 10, device = "jpg")
+  y <- write_last(x = x, height = 5, width = 10, device = "jpg")
   expect_true(file_exists(y))
 })
 
@@ -47,4 +47,10 @@ test_that("all other objects are saved as rds", {
   expect_error(z <- read_rds(y), NA)
   expect_equal(class(z), class(austres))
   expect_s3_class(z, "ts")
+})
+
+test_that("last object can be saved as rds", {
+  y <- save_last(x = iris)
+  expect_true(file_exists(y))
+  expect_equal(path_ext(y), "rds")
 })

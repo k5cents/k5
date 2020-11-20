@@ -7,9 +7,9 @@
 #' 1. For data frames, a tab-separated file via [readr::write_tsv()].
 #' 2. For vectors, a newline-separated file via [readr::write_lines()].
 #' 3. For ggplots, a raster image (by default) via [ggplot2::ggsave()].
-#' 4. For other lists, an uncompressed RDS file via [readr::write_rds()].
-#' @param x The object to write, defaults to [.Last.value].
+#' 4. For other objects, an uncompressed data file via [readr::write_rds()].
 #' @param file File or connection to write to.
+#' @param x The object to write, usually left as [base::.Last.value].
 #' @param ... Additional arguments passed to the writing function (see Details).
 #' @return The created file path, invisibly.
 #' @importFrom fs as_fs_path path_ext path_ext_set
@@ -18,11 +18,11 @@
 #' @importFrom usethis ui_info ui_done ui_path ui_field ui_stop
 #' @importFrom utils hasName capture.output
 #' @export
-write_last <- function(x = .Last.value, file = tempfile(), ...) {
+write_last <- function(file = tempfile(), x = .Last.value, ...) {
   y <- x
   no_ext <- !nzchar(fs::path_ext(file))
   usethis::ui_info("{usethis::ui_code('.Last.value')} has class \\
-                   {usethis::ui_value(class(x))}")
+                    {usethis::ui_value(class(x))}")
   if (ggplot2::is.ggplot(y)) {
     if (no_ext) {
       dots <- list()
@@ -48,7 +48,6 @@ write_last <- function(x = .Last.value, file = tempfile(), ...) {
     file <- fs::path_ext_set(file, "txt")
     readr::write_lines(y, file, ...)
     type <- "line-separated"
-    ext <- "txt"
   } else if (is.function(y)) {
     file <- fs::path_ext_set(file, "R")
     y <- capture.output(y)
@@ -58,10 +57,35 @@ write_last <- function(x = .Last.value, file = tempfile(), ...) {
     file <- fs::path_ext_set(file, "rds")
     readr::write_rds(y, file, ...)
     type <- "binary"
+    usethis::ui_oops(
+      "Class {usethis::ui_value(class(x))} has no plain text format"
+    )
   }
   if (fs::file_exists(file)) {
     usethis::ui_done(
-      "Saved {usethis::ui_field(type)} file {usethis::ui_path(file)}"
+      "Saved {usethis::ui_field(type)} file {usethis::ui_path(file)} \\
+      ({fs::file_size(file)})"
+    )
+  } else {
+    usethis::ui_stop(
+      "Failed to save file {usethis::ui_path(file)}"
+    )
+  }
+  invisible(fs::as_fs_path(file))
+}
+
+#' @rdname write_last
+#' @export
+save_last <- function(file = tempfile(), x = .Last.value, ...) {
+  y <- x
+  usethis::ui_info("{usethis::ui_code('.Last.value')} has class \\
+                   {usethis::ui_value(class(x))}")
+  file <- fs::path_ext_set(file, "rds")
+  readr::write_rds(y, file, ...)
+  if (fs::file_exists(file)) {
+    usethis::ui_done(
+      "Saved {usethis::ui_field('binary')} file {usethis::ui_path(file)} \\
+      ({fs::file_size(file)})"
     )
   } else {
     usethis::ui_stop(
