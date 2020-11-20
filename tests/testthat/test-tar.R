@@ -49,7 +49,7 @@ test_that("tar total size comparrison is displayed", {
   z <- tar_create(t)
   expect_output(
     object = tar_size(z),
-    regexp = "deflated: .*, compressed: .* (.*%)"
+    regexp = "deflated: .*, compressed: .* (.*)"
   )
   unlink(c(t, z))
 })
