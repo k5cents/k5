@@ -194,10 +194,14 @@ tar_move <- function(path, dir = NULL, files = NULL, junk = TRUE,
 #' @importFrom utils tar
 #' @export
 tar_create <- function(path, tar = NULL,
-                       compress = c("xz", "gzip", "bzip2", "none"), level = 6,
+                       compress = c("xz", "none", "gzip", "bzip2"), level = 6,
                        extra = "", method = "tar") {
   path <- fs::path_real(path)
-  compress <- match.arg(compress, c("xz", "gzip", "bzip2", "none"))
+  compress <- match.arg(compress, c("xz", "none", "gzip", "bzip2"))
+  if (.Platform$OS.type == "windows") {
+    compress <- "none"
+    message("no compression used on windows")
+  }
   if (is.null(tar) && length(path) == 1) {
     tar <- fs::path_ext_set(path, "tar")
     c <- switch(compress,

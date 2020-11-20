@@ -7,7 +7,7 @@
 tar_create(
   path,
   tar = NULL,
-  compress = c("xz", "gzip", "bzip2", "none"),
+  compress = c("none", "gzip", "bzip2", "xz"),
   level = 6,
   extra = "",
   method = "tar"
