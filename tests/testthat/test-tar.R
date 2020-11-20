@@ -1,6 +1,7 @@
 library(fs)
 
 test_that("tar archives can be created", {
+  skip_on_os("windows")
   skip_if_not_installed("utils")
   t <- file_temp("mtcars", ext = "csv")
   write.csv(mtcars, t)
@@ -11,6 +12,7 @@ test_that("tar archives can be created", {
 })
 
 test_that("tar paths can be junked", {
+  skip_on_os("windows")
   skip_if_not_installed("utils")
   t <- file_temp("mtcars", ext = "csv")
   write.csv(mtcars, t)
@@ -22,6 +24,7 @@ test_that("tar paths can be junked", {
 })
 
 test_that("tar contents can be listed", {
+  skip_on_os("windows")
   skip_if_not_installed("utils")
   t <- file_temp("mtcars", ext = "csv")
   write.csv(mtcars, t)
@@ -33,6 +36,7 @@ test_that("tar contents can be listed", {
 })
 
 test_that("tar total size is returned invisibly", {
+  skip_on_os("windows")
   skip_if_not_installed("utils")
   t <- file_temp("mtcars", ext = "csv")
   write.csv(mtcars, t)
@@ -43,6 +47,7 @@ test_that("tar total size is returned invisibly", {
 })
 
 test_that("tar total size comparrison is displayed", {
+  skip_on_os("windows")
   skip_if_not_installed("utils")
   t <- file_temp("mtcars", ext = "csv")
   write.csv(mtcars, t)
@@ -56,6 +61,7 @@ test_that("tar total size comparrison is displayed", {
 
 
 test_that("vector of tar content sizes is returned", {
+  skip_on_os("windows")
   skip_if_not_installed("utils")
   t1 <- file_temp("mtcars", ext = "csv")
   write.csv(mtcars, t1)
@@ -68,7 +74,8 @@ test_that("vector of tar content sizes is returned", {
   unlink(c(t1, t2, z))
 })
 
-test_that("multiple zips can be listed", {
+test_that("multiple tars can be listed", {
+  skip_on_os("windows")
   skip_if_not_installed("utils")
   t1 <- file_temp("mtcars", ext = "csv")
   write.csv(mtcars, t1)
@@ -85,7 +92,8 @@ test_that("multiple zips can be listed", {
   unlink(c(t1, t2, z1, z2, o))
 })
 
-test_that("zips can be extracted", {
+test_that("tars can be extracted", {
+  skip_on_os("windows")
   skip_if_not_installed("utils")
   t <- file_temp("mtcars", ext = "csv")
   write.csv(mtcars, t)
@@ -97,6 +105,7 @@ test_that("zips can be extracted", {
 })
 
 test_that("tar extract fails without dir", {
+  skip_on_os("windows")
   skip_if_not_installed("utils")
   t <- file_temp("mtcars", ext = "csv")
   write.csv(mtcars, t)
