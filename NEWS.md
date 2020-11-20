@@ -1,4 +1,4 @@
-# k5 (development version)
+# k5 0.0.1
 
 * Changed `aws_ls()` to `aws_info()` to match `fs::dir_info()`.
 * New `aws_ls()` added to take filenames from `aws_info()` like `fs::dir_ls()`.
