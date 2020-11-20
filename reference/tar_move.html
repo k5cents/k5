@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get path to k5 example — zip_example • k5</title>
+<title>Extract zip contents — tar_move • k5</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,10 +46,12 @@
 
 
 
-<meta property="og:title" content="Get path to k5 example — zip_example" />
-<meta property="og:description" content="k5 comes bundled with a number of sample files in its inst/extdata
-directory. This function make them easy to access. The two files are regular
-and compressed versions of a delimited file containing the mtcars data." />
+<meta property="og:title" content="Extract zip contents — tar_move" />
+<meta property="og:description" content="Decompress the contents of a zip archive and extract them to a single
+directory so they can be read. Compared to utils::unzip(), a directory
+must be provided in the dir directory; files are not automatically
+extracted to the current working directory. New file paths are returned
+invisibly." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -121,38 +123,63 @@ and compressed versions of a delimited file containing the mtcars data." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get path to k5 example</h1>
-    <small class="dont-index">Source: <a href='https://github.com/kiernann/k5/blob/master/R/zip.R'><code>R/zip.R</code></a></small>
-    <div class="hidden name"><code>zip_example.Rd</code></div>
+    <h1>Extract zip contents</h1>
+    <small class="dont-index">Source: <a href='https://github.com/kiernann/k5/blob/master/R/tar.R'><code>R/tar.R</code></a></small>
+    <div class="hidden name"><code>tar_move.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>k5 comes bundled with a number of sample files in its <code>inst/extdata</code>
-directory. This function make them easy to access. The two files are regular
-and compressed versions of a delimited file containing the mtcars data.</p>
+    <p>Decompress the contents of a zip archive and extract them to a single
+directory so they can be read. Compared to <code><a href='https://rdrr.io/r/utils/unzip.html'>utils::unzip()</a></code>, a directory
+<em>must</em> be provided in the <code>dir</code> directory; files are not automatically
+extracted to the current working directory. New file paths are returned
+invisibly.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>zip_example</span><span class='op'>(</span>zip <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>tar_move</span><span class='op'>(</span><span class='va'>path</span>, dir <span class='op'>=</span> <span class='cn'>NULL</span>, files <span class='op'>=</span> <span class='cn'>NULL</span>, junk <span class='op'>=</span> <span class='cn'>TRUE</span>, method <span class='op'>=</span> <span class='st'>"tar"</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>zip</th>
-      <td><p>If <code>TRUE</code> (default), the path to the compressed version is
-returned. If <code>FALSE</code>, the uncompressed version. If <code>NULL</code>, the example
-file names (not paths) will be listed.</p></td>
+      <th>path</th>
+      <td><p>A character vector of zip archives.</p></td>
+    </tr>
+    <tr>
+      <th>dir</th>
+      <td><p>The directory to extract files to (the equivalent of <code>tar -C</code>).
+It will be created if necessary with <code><a href='http://fs.r-lib.org/reference/create.html'>dir_create()</a></code>.</p></td>
+    </tr>
+    <tr>
+      <th>files</th>
+      <td><p>A character vector of paths to be extracted: the default is to
+extract all files. Use <code><a href='tar_info.html'>tar_ls()</a></code> to list contents without extracting.</p></td>
+    </tr>
+    <tr>
+      <th>junk</th>
+      <td><p>If <code>FALSE</code> (default), preserve the directories of compressed
+files. If <code>TRUE</code>, use only the basename of the stored path when extracting;
+forward slashes in the tarball contents are counted and the maximum amount
+are passed to <code>tar --strip-components</code>.</p></td>
+    </tr>
+    <tr>
+      <th>method</th>
+      <td><p>The method to be used.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>If <code>zip</code> is not <code>NULL</code>, the <code>fs_path</code> to the system file.</p>
+    <p>The path to the extracted files (invisibly).</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>zip_example</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #BB0000;font-weight: bold;'>/Users/runner/work/_temp/Library/k5/extdata/mtcars.csv.zip</span><span></div><div class='input'><span class='fu'>zip_example</span><span class='op'>(</span><span class='cn'>NULL</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; mtcars.csv     </span><span style='color: #BB0000;font-weight: bold;'>mtcars.csv.zip</span><span> </div></span></pre>
+    <pre class="examples"><div class='input'><span class='co'># Extract two files from tarball</span>
+<span class='va'>tmp</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span>fileext <span class='op'>=</span> <span class='st'>".csv"</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/write.table.html'>write.csv</a></span><span class='op'>(</span><span class='va'>iris</span>, <span class='va'>tmp</span><span class='op'>)</span>
+<span class='va'>txz</span> <span class='op'>&lt;-</span> <span class='fu'><a href='tar_create.html'>tar_create</a></span><span class='op'>(</span><span class='va'>tmp</span><span class='op'>)</span>
+<span class='va'>out</span> <span class='op'>&lt;-</span> <span class='fu'>tar_move</span><span class='op'>(</span><span class='va'>txz</span>, dir <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempdir</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/file.info.html'>file.size</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>tmp</span>, <span class='va'>txz</span>, <span class='va'>out</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] 4821 1184   NA</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

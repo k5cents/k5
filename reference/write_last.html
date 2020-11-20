@@ -81,7 +81,7 @@ assigned to .Last.value before further processing (e.g., printing)." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">k5</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9004</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9005</span>
       </span>
     </div>
 
@@ -130,18 +130,20 @@ assigned to .Last.value before further processing (e.g., printing)." />
 assigned to <code>.Last.value</code> before further processing (e.g., printing).</p>
     </div>
 
-    <pre class="usage"><span class='fu'>write_last</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>.Last.value</span>, file <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>write_last</span><span class='op'>(</span>file <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span><span class='op'>)</span>, x <span class='op'>=</span> <span class='va'>.Last.value</span>, <span class='va'>...</span><span class='op'>)</span>
+
+<span class='fu'>save_last</span><span class='op'>(</span>file <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span><span class='op'>)</span>, x <span class='op'>=</span> <span class='va'>.Last.value</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>The object to write, defaults to <a href='https://rdrr.io/r/base/Last.value.html'>.Last.value</a>.</p></td>
-    </tr>
-    <tr>
       <th>file</th>
       <td><p>File or connection to write to.</p></td>
+    </tr>
+    <tr>
+      <th>x</th>
+      <td><p>The object to write, usually left as base::.Last.value.</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -158,7 +160,7 @@ assigned to <code>.Last.value</code> before further processing (e.g., printing).
 <li><p>For data frames, a tab-separated file via <code><a href='https://readr.tidyverse.org/reference/write_delim.html'>readr::write_tsv()</a></code>.</p></li>
 <li><p>For vectors, a newline-separated file via <code><a href='https://readr.tidyverse.org/reference/read_lines.html'>readr::write_lines()</a></code>.</p></li>
 <li><p>For ggplots, a raster image (by default) via <code><a href='https://ggplot2.tidyverse.org/reference/ggsave.html'>ggplot2::ggsave()</a></code>.</p></li>
-<li><p>For other lists, an uncompressed RDS file via <code><a href='https://readr.tidyverse.org/reference/read_rds.html'>readr::write_rds()</a></code>.</p></li>
+<li><p>For other objects, an uncompressed data file via <code><a href='https://readr.tidyverse.org/reference/read_rds.html'>readr::write_rds()</a></code>.</p></li>
 </ol>
 
 

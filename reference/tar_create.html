@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get path to k5 example — zip_example • k5</title>
+<title>Create tar archive — tar_create • k5</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,10 +46,9 @@
 
 
 
-<meta property="og:title" content="Get path to k5 example — zip_example" />
-<meta property="og:description" content="k5 comes bundled with a number of sample files in its inst/extdata
-directory. This function make them easy to access. The two files are regular
-and compressed versions of a delimited file containing the mtcars data." />
+<meta property="og:title" content="Create tar archive — tar_create" />
+<meta property="og:description" content="A wrapper for an external tar command to create tar archives. Unlike
+utils::tar(), filepaths can be passed into the first argument with %&amp;gt;%." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -121,38 +120,70 @@ and compressed versions of a delimited file containing the mtcars data." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get path to k5 example</h1>
-    <small class="dont-index">Source: <a href='https://github.com/kiernann/k5/blob/master/R/zip.R'><code>R/zip.R</code></a></small>
-    <div class="hidden name"><code>zip_example.Rd</code></div>
+    <h1>Create tar archive</h1>
+    <small class="dont-index">Source: <a href='https://github.com/kiernann/k5/blob/master/R/tar.R'><code>R/tar.R</code></a></small>
+    <div class="hidden name"><code>tar_create.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>k5 comes bundled with a number of sample files in its <code>inst/extdata</code>
-directory. This function make them easy to access. The two files are regular
-and compressed versions of a delimited file containing the mtcars data.</p>
+    <p>A wrapper for an external <code>tar</code> command to create tar archives. Unlike
+<code><a href='https://rdrr.io/r/utils/tar.html'>utils::tar()</a></code>, filepaths can be passed into the first argument with <code>%&gt;%</code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>zip_example</span><span class='op'>(</span>zip <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>tar_create</span><span class='op'>(</span>
+  <span class='va'>path</span>,
+  tar <span class='op'>=</span> <span class='cn'>NULL</span>,
+  compress <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"xz"</span>, <span class='st'>"gzip"</span>, <span class='st'>"bzip2"</span>, <span class='st'>"none"</span><span class='op'>)</span>,
+  level <span class='op'>=</span> <span class='fl'>6</span>,
+  extra <span class='op'>=</span> <span class='st'>""</span>,
+  method <span class='op'>=</span> <span class='st'>"tar"</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>zip</th>
-      <td><p>If <code>TRUE</code> (default), the path to the compressed version is
-returned. If <code>FALSE</code>, the uncompressed version. If <code>NULL</code>, the example
-file names (not paths) will be listed.</p></td>
+      <th>path</th>
+      <td><p>A character vector of files to archive.</p></td>
+    </tr>
+    <tr>
+      <th>tar</th>
+      <td><p>The path of the tarball file to create. If none is supplied, and
+only one path is, an archive with that <code><a href='https://rdrr.io/r/base/basename.html'>basename()</a></code> will be created in the
+same directory.</p></td>
+    </tr>
+    <tr>
+      <th>compress</th>
+      <td><p>Character string giving the type of compression to be used.</p></td>
+    </tr>
+    <tr>
+      <th>level</th>
+      <td><p>Integer compression level used with internal method, 1-9.</p></td>
+    </tr>
+    <tr>
+      <th>extra</th>
+      <td><p>An optional character vector passed to <code><a href='https://rdrr.io/r/base/system.html'>system()</a></code> as arguments
+of the external <code>tar</code> command.</p></td>
+    </tr>
+    <tr>
+      <th>method</th>
+      <td><p>A character string specifying the external command to be used.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>If <code>zip</code> is not <code>NULL</code>, the <code>fs_path</code> to the system file.</p>
+    <p>The path of the created archive (invisibly).</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>zip_example</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #BB0000;font-weight: bold;'>/Users/runner/work/_temp/Library/k5/extdata/mtcars.csv.zip</span><span></div><div class='input'><span class='fu'>zip_example</span><span class='op'>(</span><span class='cn'>NULL</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; mtcars.csv     </span><span style='color: #BB0000;font-weight: bold;'>mtcars.csv.zip</span><span> </div></span></pre>
+    <pre class="examples"><div class='input'><span class='va'>.old_wd</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>setwd</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempdir</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
+<span class='co'># Tar a file to same basename</span>
+<span class='va'>tmp</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span>fileext <span class='op'>=</span> <span class='st'>".csv"</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/write.table.html'>write.csv</a></span><span class='op'>(</span><span class='va'>iris</span>, <span class='va'>tmp</span><span class='op'>)</span>
+<span class='op'>(</span><span class='va'>txz</span> <span class='op'>&lt;-</span> <span class='fu'>tar_create</span><span class='op'>(</span><span class='va'>tmp</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #BB0000;font-weight: bold;'>/private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpNESYuW/file6a46265d6f8.tar.xz</span><span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/file.info.html'>file.size</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>tmp</span>, <span class='va'>txz</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] 4821 1184</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>setwd</a></span><span class='op'>(</span><span class='va'>.old_wd</span><span class='op'>)</span>
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

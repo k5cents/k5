@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>List zip contents — zip_info • k5</title>
+<title>List tar contents — tar_info • k5</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,10 +46,10 @@
 
 
 
-<meta property="og:title" content="List zip contents — zip_info" />
-<meta property="og:description" content="zip_info() is the equivalent to the unzip -l command. It returns a data
+<meta property="og:title" content="List tar contents — tar_info" />
+<meta property="og:description" content="tar_info() is the equivalent to the tar -tf command. It returns a data
 frame (like fs::dir_info()).
-zip_ls() also uses unzip -l but only returns the filenames within the
+tar_ls() also uses tar -tf but only returns the filenames within the
 archive as a named fs_path character vector (like fs::dir_ls())." />
 <meta property="og:image" content="/logo.png" />
 
@@ -122,35 +122,35 @@ archive as a named fs_path character vector (like fs::dir_ls())." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>List zip contents</h1>
-    <small class="dont-index">Source: <a href='https://github.com/kiernann/k5/blob/master/R/zip.R'><code>R/zip.R</code></a></small>
-    <div class="hidden name"><code>zip_info.Rd</code></div>
+    <h1>List tar contents</h1>
+    <small class="dont-index">Source: <a href='https://github.com/kiernann/k5/blob/master/R/tar.R'><code>R/tar.R</code></a></small>
+    <div class="hidden name"><code>tar_info.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><code>zip_info()</code> is the equivalent to the <code>unzip -l</code> command. It returns a data
+    <p><code>tar_info()</code> is the equivalent to the <code>tar -tf</code> command. It returns a data
 frame (like <code><a href='http://fs.r-lib.org/reference/dir_ls.html'>fs::dir_info()</a></code>).</p>
-<p><code>zip_ls()</code> also uses <code>unzip -l</code> but only returns the filenames within the
+<p><code>tar_ls()</code> also uses <code>tar -tf</code> but only returns the filenames within the
 archive as a named <code>fs_path</code> character vector (like <code><a href='http://fs.r-lib.org/reference/dir_ls.html'>fs::dir_ls()</a></code>).</p>
     </div>
 
-    <pre class="usage"><span class='fu'>zip_info</span><span class='op'>(</span><span class='va'>path</span>, method <span class='op'>=</span> <span class='st'>"internal"</span><span class='op'>)</span>
+    <pre class="usage"><span class='fu'>tar_info</span><span class='op'>(</span><span class='va'>path</span>, method <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Sys.getenv.html'>Sys.getenv</a></span><span class='op'>(</span><span class='st'>"TAR"</span><span class='op'>)</span><span class='op'>)</span>
 
-<span class='fu'>zip_ls</span><span class='op'>(</span><span class='va'>path</span>, method <span class='op'>=</span> <span class='st'>"internal"</span><span class='op'>)</span>
+<span class='fu'>tar_ls</span><span class='op'>(</span><span class='va'>path</span>, method <span class='op'>=</span> <span class='st'>"internal"</span><span class='op'>)</span>
 
-<span class='fu'>zip_size</span><span class='op'>(</span><span class='va'>path</span>, sum <span class='op'>=</span> <span class='cn'>TRUE</span>, method <span class='op'>=</span> <span class='st'>"internal"</span><span class='op'>)</span></pre>
+<span class='fu'>tar_size</span><span class='op'>(</span><span class='va'>path</span>, sum <span class='op'>=</span> <span class='cn'>TRUE</span>, method <span class='op'>=</span> <span class='st'>"tar"</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>path</th>
-      <td><p>A character vector of zip archives.</p></td>
+      <td><p>A character vector of tarball archives.</p></td>
     </tr>
     <tr>
       <th>method</th>
-      <td><p>The method to be used. Passed to <code>utils::unizp()</code>. An
-alternative is to use <code><a href='https://rdrr.io/r/base/options.html'>getOption("unzip")</a></code>.</p></td>
+      <td><p>The method to be used. Passed to <code><a href='https://rdrr.io/r/utils/tar.html'>utils::tar()</a></code>. An alternative
+is to use <code><a href='https://rdrr.io/r/base/Sys.getenv.html'>Sys.getenv("TAR")</a></code>.</p></td>
     </tr>
     <tr>
       <th>sum</th>
@@ -168,16 +168,17 @@ vector.</p></td>
 <span class='fu'><a href='https://rdrr.io/r/utils/write.table.html'>write.csv</a></span><span class='op'>(</span><span class='va'>iris</span>, <span class='va'>irs</span><span class='op'>)</span>
 <span class='va'>mtc</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span>fileext <span class='op'>=</span> <span class='st'>".csv"</span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/utils/write.table.html'>write.csv</a></span><span class='op'>(</span><span class='va'>mtcars</span>, <span class='va'>mtc</span><span class='op'>)</span>
-<span class='va'>zzp</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span>fileext <span class='op'>=</span> <span class='st'>".zip"</span><span class='op'>)</span>
-<span class='fu'><a href='zip_create.html'>zip_create</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>irs</span>, <span class='va'>mtc</span><span class='op'>)</span>, <span class='va'>zzp</span>, junk <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-<span class='fu'>zip_size</span><span class='op'>(</span><span class='va'>zzp</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; deflated: 6.45K, compressed: 2.19K (33.89%)</div><div class='input'><span class='fu'>zip_info</span><span class='op'>(</span><span class='va'>zzp</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 2 x 3</span><span>
-#&gt;   path                       size date               
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;fs::path&gt;</span><span>          </span><span style='color: #555555;font-style: italic;'>&lt;fs::bytes&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dttm&gt;</span><span>             
-#&gt; </span><span style='color: #555555;'>1</span><span> file6a4143e8060.csv       4.71K 2020-11-20 </span><span style='color: #555555;'>03:05:00</span><span>
-#&gt; </span><span style='color: #555555;'>2</span><span> file6a4135e2902.csv       1.74K 2020-11-20 </span><span style='color: #555555;'>03:05:00</span><span></div><div class='input'><span class='fu'>zip_ls</span><span class='op'>(</span><span class='va'>zzp</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; file6a4143e8060.csv file6a4135e2902.csv </div></span></pre>
+<span class='va'>txz</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span>fileext <span class='op'>=</span> <span class='st'>".tar"</span><span class='op'>)</span>
+<span class='fu'><a href='tar_create.html'>tar_create</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>irs</span>, <span class='va'>mtc</span><span class='op'>)</span>, <span class='va'>txz</span><span class='op'>)</span>
+<span class='fu'>tar_size</span><span class='op'>(</span><span class='va'>txz</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; deflated: NA, compressed: 1.92K (NA)</div><div class='input'><span class='fu'>tar_info</span><span class='op'>(</span><span class='va'>txz</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 2 x 6</span><span>
+#&gt;   path                          size permissions modification_time    user group
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;fs::path&gt;</span><span>                  </span><span style='color: #555555;font-style: italic;'>&lt;fs::&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;fs::perms&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dttm&gt;</span><span>              </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>1</span><span> 20 03:05 private var folde…     NA rw-rw-rw-   </span><span style='color: #BB0000;'>NA</span><span>                      0 runn…
+#&gt; </span><span style='color: #555555;'>2</span><span> 20 03:05 private var folde…     NA rw-rw-rw-   </span><span style='color: #BB0000;'>NA</span><span>                      0 runn…</div><div class='input'><span class='fu'>tar_ls</span><span class='op'>(</span><span class='va'>txz</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpNESYuW/file6a4c046640.csv
+#&gt; private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpNESYuW/file6a474d4f9e9.csv</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
