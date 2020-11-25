@@ -3,16 +3,19 @@
 \name{aws_info}
 \alias{aws_info}
 \alias{aws_ls}
+\alias{aws_bucket}
 \title{List all objects in an AWS bucket}
 \usage{
-aws_info(bucket = getOption("aws.bucket"), prefix = NULL, ...)
+aws_info(bucket = aws_bucket(), prefix = NULL, ...)
 
-aws_ls(bucket = getOption("bucket"), prefix = NULL, ...)
+aws_ls(bucket = aws_bucket(), prefix = NULL, ...)
+
+aws_bucket(bucket = NULL, set = FALSE)
 }
 \arguments{
 \item{bucket}{Character string with the name of the bucket. If you use the
 same bucket frequently, you can set a default through an option named
-that can be retrieved with \code{getOption("aws.bucket")}.}
+that can be retrieved with \code{\link[=aws_bucket]{aws_bucket()}}.}
 
 \item{prefix}{Character string that limits the response to keys that begin
 with the specified prefix.}

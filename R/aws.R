@@ -11,7 +11,7 @@
 #'
 #' @param bucket Character string with the name of the bucket. If you use the
 #'   same bucket frequently, you can set a default through an option named
-#'   that can be retrieved with `getOption("aws.bucket")`.
+#'   that can be retrieved with [aws_bucket()].
 #' @param prefix Character string that limits the response to keys that begin
 #'   with the specified prefix.
 #' @param ... Additional arguments passed to [aws.s3::s3HTTP()].
@@ -23,7 +23,7 @@
 #' @importFrom readr parse_datetime
 #' @importFrom tibble as_tibble
 #' @export
-aws_info <- function(bucket = getOption("aws.bucket"), prefix = NULL, ...) {
+aws_info <- function(bucket = aws_bucket(), prefix = NULL, ...) {
   stopifnot(!is.null(bucket))
   z <- aws.s3::get_bucket_df(bucket = bucket, prefix = prefix, ...)
   z$path <- fs::as_fs_path(z$Key)
@@ -36,9 +36,23 @@ aws_info <- function(bucket = getOption("aws.bucket"), prefix = NULL, ...) {
 
 #' @rdname aws_info
 #' @export
-aws_ls <- function(bucket = getOption("bucket"), prefix = NULL, ...) {
+aws_ls <- function(bucket = aws_bucket(), prefix = NULL, ...) {
   z <- aws.s3::get_bucket_df(bucket = bucket, prefix = prefix, ...)
   fs::as_fs_path(z$Key)
+}
+
+#' @rdname aws_info
+#' @export
+aws_bucket <- function(bucket = getOption("aws.bucket"), set = FALSE) {
+  if (set) {
+    usethis::ui_todo("Call {ui_code('usethis::edit_r_profile()')} to open \\
+                     {usethis::ui_path('.Rprofile')}.")
+    usethis::ui_todo("Set your option on start-up with a line like:")
+    usethis::ui_code_block("options(aws.bucket = \"{bucket}\")")
+    invisible(getOption("aws.bucket", bucket))
+  } else {
+    getOption("aws.bucket", bucket)
+  }
 }
 
 file_types <- c(
