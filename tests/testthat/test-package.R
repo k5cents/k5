@@ -15,6 +15,8 @@ test_that("attached packages can be saved", {
 })
 
 test_that("default packages can be loaded", {
-  x <- load.packages(path = NULL, install = FALSE)
-  expect_length(x, 20)
+  tmp <- tempfile()
+  writeLines("k5", tmp)
+  x <- load.packages(path = tmp, install = FALSE)
+  expect_length(x, 1)
 })
