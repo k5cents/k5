@@ -16,6 +16,7 @@ Imports:
     ggplot2 (>= 3.3.2),
     glue (>= 1.4.2),
     magrittr (>= 1.5),
+    pacman (>= 0.5.1),
     readr (>= 1.4.0),
     scales (>= 1.1.1),
     tibble (>= 3.0.4),
