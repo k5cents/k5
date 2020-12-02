@@ -33,10 +33,12 @@ extracted to the current working directory. New file paths are returned
 invisibly.
 }
 \examples{
+\dontrun{
 # Extract two files from tarball
 tmp <- tempfile(fileext = ".csv")
 write.csv(iris, tmp)
 txz <- tar_create(tmp)
 out <- tar_move(txz, dir = tempdir())
 file.size(c(tmp, txz, out))
+}
 }

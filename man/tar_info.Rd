@@ -31,6 +31,7 @@ frame (like \code{\link[fs:dir_ls]{fs::dir_info()}}).
 archive as a named \code{fs_path} character vector (like \code{\link[fs:dir_ls]{fs::dir_ls()}}).
 }
 \examples{
+\dontrun{
 # List two files from zip
 irs <- tempfile(fileext = ".csv")
 write.csv(iris, irs)
@@ -41,4 +42,5 @@ tar_create(c(irs, mtc), txz)
 tar_size(txz)
 tar_info(txz)
 tar_ls(txz)
+}
 }

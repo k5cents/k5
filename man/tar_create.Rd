@@ -37,11 +37,11 @@ A wrapper for an external \code{tar} command to create tar archives. Unlike
 \code{\link[utils:tar]{utils::tar()}}, filepaths can be passed into the first argument with \verb{\%>\%}.
 }
 \examples{
-\dontshow{.old_wd <- setwd(tempdir())}
+\dontrun{
 # Tar a file to same basename
 tmp <- tempfile(fileext = ".csv")
 write.csv(iris, tmp)
 (txz <- tar_create(tmp))
 file.size(c(tmp, txz))
-\dontshow{setwd(.old_wd)}
+}
 }

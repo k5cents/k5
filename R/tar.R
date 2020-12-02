@@ -11,6 +11,7 @@
 #' @param method The method to be used. Passed to `utils::tar()`. An alternative
 #'   is to use `Sys.getenv("TAR")`.
 #' @examples
+#' \dontrun{
 #' # List two files from zip
 #' irs <- tempfile(fileext = ".csv")
 #' write.csv(iris, irs)
@@ -21,6 +22,7 @@
 #' tar_size(txz)
 #' tar_info(txz)
 #' tar_ls(txz)
+#' }
 #' @importFrom fs path_real as_fs_path as_fs_bytes
 #' @importFrom utils unzip
 #' @importFrom tibble as_tibble
@@ -130,12 +132,14 @@ tar_size <- function(path, sum = TRUE, method = "tar") {
 #' @param method The method to be used.
 #' @return The path to the extracted files (invisibly).
 #' @examples
+#' \dontrun{
 #' # Extract two files from tarball
 #' tmp <- tempfile(fileext = ".csv")
 #' write.csv(iris, tmp)
 #' txz <- tar_create(tmp)
 #' out <- tar_move(txz, dir = tempdir())
 #' file.size(c(tmp, txz, out))
+#' }
 #' @importFrom fs path_real dir_create as_fs_path
 #' @importFrom utils unzip
 #' @export
@@ -183,13 +187,13 @@ tar_move <- function(path, dir = NULL, files = NULL, junk = TRUE,
 #' @param method A character string specifying the external command to be used.
 #' @return The path of the created archive (invisibly).
 #' @examples
-#' \dontshow{.old_wd <- setwd(tempdir())}
+#' \dontrun{
 #' # Tar a file to same basename
 #' tmp <- tempfile(fileext = ".csv")
 #' write.csv(iris, tmp)
 #' (txz <- tar_create(tmp))
 #' file.size(c(tmp, txz))
-#' \dontshow{setwd(.old_wd)}
+#' }
 #' @importFrom fs path_real path_ext_set path_expand
 #' @importFrom utils tar
 #' @export
