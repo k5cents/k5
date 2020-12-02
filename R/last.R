@@ -123,7 +123,8 @@ view_last <- function(x = .Last.value) {
 #' The value of the internal evaluation of a top-level R expression is always
 #' assigned to .Last.value (in package:base) before further processing (e.g.,
 #' printing).
-#'
+#' @param x The object to return, usually left as [base::.Last.value].
+#' @return The same `.Last.value` as _before_ viewing, invisibly.
 #' @export
 last_value <- function(x = .Last.value) {
   return(x)

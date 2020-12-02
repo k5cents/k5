@@ -6,6 +6,12 @@
 \usage{
 last_value(x = .Last.value)
 }
+\arguments{
+\item{x}{The object to return, usually left as \link[base:Last.value]{base::.Last.value}.}
+}
+\value{
+The same \code{.Last.value} as \emph{before} viewing, invisibly.
+}
 \description{
 A function shortcut for accessing \link{.Last.value}.
 }
