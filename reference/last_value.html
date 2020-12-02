@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Write the last value to disk — write_last • k5</title>
+<title>Return the last value — last_value • k5</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,9 +46,8 @@
 
 
 
-<meta property="og:title" content="Write the last value to disk — write_last" />
-<meta property="og:description" content="The value of the internal evaluation of a top-level R expression is always
-assigned to .Last.value before further processing (e.g., printing)." />
+<meta property="og:title" content="Return the last value — last_value" />
+<meta property="og:description" content="A function shortcut for accessing .Last.value." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -120,49 +119,34 @@ assigned to .Last.value before further processing (e.g., printing)." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Write the last value to disk</h1>
+    <h1>Return the last value</h1>
     <small class="dont-index">Source: <a href='https://github.com/kiernann/k5/blob/master/R/last.R'><code>R/last.R</code></a></small>
-    <div class="hidden name"><code>write_last.Rd</code></div>
+    <div class="hidden name"><code>last_value.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>The value of the internal evaluation of a top-level R expression is always
-assigned to <code>.Last.value</code> before further processing (e.g., printing).</p>
+    <p>A function shortcut for accessing <a href='https://rdrr.io/r/base/Last.value.html'>.Last.value</a>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>write_last</span><span class='op'>(</span>file <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span><span class='op'>)</span>, x <span class='op'>=</span> <span class='va'>.Last.value</span>, <span class='va'>...</span><span class='op'>)</span>
-
-<span class='fu'>save_last</span><span class='op'>(</span>file <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span><span class='op'>)</span>, x <span class='op'>=</span> <span class='va'>.Last.value</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>last_value</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>.Last.value</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>file</th>
-      <td><p>File or connection to write to.</p></td>
-    </tr>
-    <tr>
       <th>x</th>
-      <td><p>The object to write, usually left as base::.Last.value.</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>Additional arguments passed to the writing function (see Details).</p></td>
+      <td><p>The object to return, usually left as base::.Last.value.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>The created file path, invisibly.</p>
+    <p>The same <code>.Last.value</code> as <em>before</em> viewing, invisibly.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Four types of files are written, based on object class:</p><ol>
-<li><p>For data frames, a tab-separated file via <code><a href='https://readr.tidyverse.org/reference/write_delim.html'>readr::write_tsv()</a></code>.</p></li>
-<li><p>For vectors, a newline-separated file via <code><a href='https://readr.tidyverse.org/reference/read_lines.html'>readr::write_lines()</a></code>.</p></li>
-<li><p>For ggplots, a raster image (by default) via <code><a href='https://ggplot2.tidyverse.org/reference/ggsave.html'>ggplot2::ggsave()</a></code>.</p></li>
-<li><p>For other objects, an uncompressed data file via <code><a href='https://readr.tidyverse.org/reference/read_rds.html'>readr::write_rds()</a></code>.</p></li>
-</ol>
-
+    <p>The value of the internal evaluation of a top-level R expression is always
+assigned to .Last.value (in package:base) before further processing (e.g.,
+printing).</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
