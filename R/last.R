@@ -94,3 +94,37 @@ save_last <- function(file = tempfile(), x = .Last.value, ...) {
   }
   invisible(fs::as_fs_path(file))
 }
+
+#' View the last object
+#'
+#' Invoke a spreadsheet-style data viewer on a matrix-like R object. In a
+#' non-interactive session, the object is returned invisibly and nothing is
+#' "viewed".
+#'
+#' The value of the internal evaluation of a top-level R expression is always
+#' assigned to `.Last.value` before further processing (e.g., printing).
+#'
+#' @param x The object to view, usually left as [base::.Last.value].
+#' @return The same `.Last.value` as _before_ viewing, invisibly.
+#' @importFrom tibble view
+#' @export
+view_last <- function(x = .Last.value) {
+  if (interactive()) {
+    tibble::view(x)
+  } else {
+    invisible(x)
+  }
+}
+
+#' Return the last value
+#'
+#' A function shortcut for accessing [.Last.value].
+#'
+#' The value of the internal evaluation of a top-level R expression is always
+#' assigned to .Last.value (in package:base) before further processing (e.g.,
+#' printing).
+#'
+#' @export
+last_value <- function(x = .Last.value) {
+  return(x)
+}

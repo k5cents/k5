@@ -54,3 +54,15 @@ test_that("last object can be saved as rds", {
   expect_true(file_exists(y))
   expect_equal(path_ext(y), "rds")
 })
+
+test_that("last value is easily returned", {
+  a <- state.name
+  x <- last_value(x = state.name)
+  expect_equal(x, a)
+})
+
+test_that("last data frames can be viewed in a window", {
+  x <- mtcars
+  y <- view_last(x = mtcars)
+  expect_equal(x, y)
+})
