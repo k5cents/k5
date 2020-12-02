@@ -10,7 +10,7 @@ aws_info(bucket = aws_bucket(), prefix = NULL, ...)
 
 aws_ls(bucket = aws_bucket(), prefix = NULL, ...)
 
-aws_bucket(bucket = NULL, set = FALSE)
+aws_bucket(bucket = getOption("aws.bucket"), set = FALSE)
 }
 \arguments{
 \item{bucket}{Character string with the name of the bucket. If you use the
@@ -21,6 +21,8 @@ that can be retrieved with \code{\link[=aws_bucket]{aws_bucket()}}.}
 with the specified prefix.}
 
 \item{...}{Additional arguments passed to \code{\link[aws.s3:s3HTTP]{aws.s3::s3HTTP()}}.}
+
+\item{set}{If \code{TRUE}, print instructions for setting the option.}
 }
 \description{
 \code{\link[=aws_info]{aws_info()}} uses \code{\link[aws.s3:get_bucket]{aws.s3::get_bucket_df()}} to return a tibble of stored

@@ -42,6 +42,7 @@ aws_ls <- function(bucket = aws_bucket(), prefix = NULL, ...) {
 }
 
 #' @rdname aws_info
+#' @param set If `TRUE`, print instructions for setting the option.
 #' @export
 aws_bucket <- function(bucket = getOption("aws.bucket"), set = FALSE) {
   if (set) {
