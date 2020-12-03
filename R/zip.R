@@ -64,7 +64,7 @@ zip_size <- function(path, sum = TRUE, method = "internal") {
   d <- sum(b$size, na.rm = TRUE)
   if (sum) {
     diff <- scales::percent(c/d, 0.01)
-    cat(glue::glue("deflated: {d}, compressed: {c} ({diff})"))
+    usethis::ui_info("deflated: {d}, compressed: {c} ({diff})")
     return(invisible(c))
   } else {
     b$size
