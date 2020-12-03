@@ -17,9 +17,8 @@ status](https://github.com/kiernann/k5/workflows/R-CMD-check/badge.svg)](https:/
 
 The goal of ‘k5’ is to offer miscellaneous quality of life functions
 used by [Kiernan Nicholls](https://github.com/kiernann) during
-interactive programming. Many of the functions simply to bring commonly
-used functions more in line with the
-[tidyverse](https://www.tidyverse.org/) style.
+interactive programming. They make things easier for me but are *bad*
+for scripts and packages.
 
 ## Installation
 
@@ -34,9 +33,15 @@ remotes::install_github("kiernann/k5")
 ## Example
 
 ``` r
-library(fs)
 library(k5)
-library(readr)
+```
+
+A list of frequently used packages can be loaded from a system (or
+custom) file.
+
+``` r
+load.packages(path = NULL, install = FALSE)
+#> ✓ load 20 packages from '/home/kiernan/R/x86_64-pc-linux-gnu-library/3.6/k5/PACKAGES'
 ```
 
 The `zip_*()` functions use `utils::zip()` but return data like
@@ -44,37 +49,31 @@ The `zip_*()` functions use `utils::zip()` but return data like
 
 ``` r
 z <- file_temp(ext = "zip")
-t %>% # can easily pipe into
+tmp %>% # can easily pipe into
   zip_create(z, junk = FALSE)
 zip_info(z)
-#> # A tibble: 5 x 3
+#> # A tibble: 3 x 3
 #>   path                        size date               
 #>   <fs::path>           <fs::bytes> <dttm>             
-#> 1 tmp/RtmpsYA89A/A.txt      17.15K 2020-11-12 21:59:00
-#> 2 tmp/RtmpsYA89A/B.txt      15.36K 2020-11-12 21:59:00
-#> 3 tmp/RtmpsYA89A/C.txt        5.5K 2020-11-12 21:59:00
-#> 4 tmp/RtmpsYA89A/D.txt       8.44K 2020-11-12 21:59:00
-#> 5 tmp/RtmpsYA89A/E.txt       2.21K 2020-11-12 21:59:00
+#> 1 tmp/RtmpvzndAB/A.txt      14.99K 2020-12-03 09:55:00
+#> 2 tmp/RtmpvzndAB/B.txt       7.74K 2020-12-03 09:55:00
+#> 3 tmp/RtmpvzndAB/C.txt      13.71K 2020-12-03 09:55:00
 zip_size(z)
-#> deflated: 48.6K, compressed: 24.5K (50.36%)
+#> ℹ deflated: 36.4K, compressed: 18.3K (50.12%)
 zip_move(z, tempdir())
 ```
 
-Compare this to the output of the `utils::unzip()` and other base
-versions.
+There are also some handy shortcuts for the `.Last.value` tool.
 
 ``` r
-zip(z, t)
-file.size(z)
-#> [1] 25086
-unzip(z, list = TRUE)
-#>                   Name Length                Date
-#> 1 tmp/RtmpsYA89A/A.txt  17557 2020-11-12 21:59:00
-#> 2 tmp/RtmpsYA89A/B.txt  15724 2020-11-12 21:59:00
-#> 3 tmp/RtmpsYA89A/C.txt   5627 2020-11-12 21:59:00
-#> 4 tmp/RtmpsYA89A/D.txt   8643 2020-11-12 21:59:00
-#> 5 tmp/RtmpsYA89A/E.txt   2264 2020-11-12 21:59:00
-unzip(z, exdir = tempdir())
+df <- tail(mtcars, 50)
+write_last()
+#> ℹ `.Last.value` has class 'data.frame'
+#> ✓ Saved tab-separated file '/tmp/RtmpFTaCH6/file15127cc7851b.tsv' (1.25K)
+vc <- sample(state.name, 1000, replace = TRUE)
+write_last()
+#> ℹ `.Last.value` has class 'character'
+#> ✓ Saved line-separated file '/tmp/RtmpFTaCH6/file151235b67c89.txt' (9.19K)
 ```
 
 <!-- refs: start -->
