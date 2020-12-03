@@ -48,10 +48,7 @@ test_that("zip total size comparrison is displayed", {
   t <- file_temp("mtcars", ext = "csv")
   write.csv(mtcars, t)
   z <- zip_create(t)
-  expect_output(
-    object = zip_size(z),
-    regexp = "deflated: .*, compressed: .* (.*%)"
-  )
+  expect_message(zip_size(z))
   unlink(c(t, z))
 })
 

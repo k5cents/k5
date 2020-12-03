@@ -13,3 +13,15 @@ test_that("bucket objects are listed as vector", {
   z <- aws_ls(bucket = "1000genomes")
   expect_s3_class(z, "fs_path")
 })
+
+test_that("bucket instruction message given", {
+  expect_message(aws_bucket(bucket = "test", set = TRUE))
+})
+
+test_that("bucket option returned", {
+  old_opt <- getOption("aws.bucket", "")
+  new_opt <- "1000genomes"
+  options(aws.bucket = new_opt)
+  expect_equal(aws_bucket(), new_opt)
+  options(aws.bucket = old_opt)
+})
