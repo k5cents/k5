@@ -43,11 +43,12 @@ aws_ls <- function(bucket = aws_bucket(), prefix = NULL, ...) {
 
 #' @rdname aws_info
 #' @param set If `TRUE`, print instructions for setting the option.
+#' @importFrom usethis ui_code ui_code_block ui_path ui_todo
 #' @export
 aws_bucket <- function(bucket = getOption("aws.bucket"), set = FALSE) {
   if (set) {
-    usethis::ui_todo("Call {ui_code('usethis::edit_r_profile()')} to open \\
-                     {usethis::ui_path('.Rprofile')}.")
+    usethis::ui_todo("Call {usethis::ui_code('usethis::edit_r_profile()')} \\
+                     to open {usethis::ui_path('.Rprofile')}.")
     usethis::ui_todo("Set your option on start-up with a line like:")
     usethis::ui_code_block("options(aws.bucket = \"{bucket}\")")
     invisible(getOption("aws.bucket", bucket))
