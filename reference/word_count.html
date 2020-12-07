@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>List zip contents — zip_info • k5</title>
+<title>Count file words, lines, and bytes — word_count • k5</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,11 +46,8 @@
 
 
 
-<meta property="og:title" content="List zip contents — zip_info" />
-<meta property="og:description" content="zip_info() is the equivalent to the unzip -l command. It returns a data
-frame (like fs::dir_info()).
-zip_ls() also uses unzip -l but only returns the filenames within the
-archive as a named fs_path character vector (like fs::dir_ls())." />
+<meta property="og:title" content="Count file words, lines, and bytes — word_count" />
+<meta property="og:description" content="Invoke system tool to print newline, word, and byte counts for each file." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -122,62 +119,41 @@ archive as a named fs_path character vector (like fs::dir_ls())." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>List zip contents</h1>
-    <small class="dont-index">Source: <a href='https://github.com/kiernann/k5/blob/master/R/zip.R'><code>R/zip.R</code></a></small>
-    <div class="hidden name"><code>zip_info.Rd</code></div>
+    <h1>Count file words, lines, and bytes</h1>
+    <small class="dont-index">Source: <a href='https://github.com/kiernann/k5/blob/master/R/word-count.R'><code>R/word-count.R</code></a></small>
+    <div class="hidden name"><code>word_count.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><code>zip_info()</code> is the equivalent to the <code>unzip -l</code> command. It returns a data
-frame (like <code><a href='http://fs.r-lib.org/reference/dir_ls.html'>fs::dir_info()</a></code>).</p>
-<p><code>zip_ls()</code> also uses <code>unzip -l</code> but only returns the filenames within the
-archive as a named <code>fs_path</code> character vector (like <code><a href='http://fs.r-lib.org/reference/dir_ls.html'>fs::dir_ls()</a></code>).</p>
+    <p>Invoke system tool to print newline, word, and byte counts for each file.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>zip_info</span><span class='op'>(</span><span class='va'>path</span>, method <span class='op'>=</span> <span class='st'>"internal"</span><span class='op'>)</span>
-
-<span class='fu'>zip_ls</span><span class='op'>(</span><span class='va'>path</span>, method <span class='op'>=</span> <span class='st'>"internal"</span><span class='op'>)</span>
-
-<span class='fu'>zip_size</span><span class='op'>(</span><span class='va'>path</span>, sum <span class='op'>=</span> <span class='cn'>TRUE</span>, method <span class='op'>=</span> <span class='st'>"internal"</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>word_count</span><span class='op'>(</span><span class='va'>path</span>, count <span class='op'>=</span> <span class='st'>""</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>path</th>
-      <td><p>A character vector of zip archives.</p></td>
+      <td><p>Character vector of file paths.</p></td>
     </tr>
     <tr>
-      <th>method</th>
-      <td><p>The method to be used. Passed to <code>utils::unizp()</code>. An
-alternative is to use <code><a href='https://rdrr.io/r/base/options.html'>getOption("unzip")</a></code>.</p></td>
-    </tr>
-    <tr>
-      <th>sum</th>
-      <td><p>If <code>TRUE</code> (default) the summed size of archive contents is
-returned invisibly and a message comparing sizes is printed. If <code>FALSE</code>,
-the uncompressed size of all contents is returned as a numeric <code>fs_bytes</code>
-vector.</p></td>
+      <th>count</th>
+      <td><p>The type of element to count, see details.</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># List two files from zip</span>
-<span class='va'>irs</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span>fileext <span class='op'>=</span> <span class='st'>".csv"</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/utils/write.table.html'>write.csv</a></span><span class='op'>(</span><span class='va'>iris</span>, <span class='va'>irs</span><span class='op'>)</span>
-<span class='va'>mtc</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span>fileext <span class='op'>=</span> <span class='st'>".csv"</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/utils/write.table.html'>write.csv</a></span><span class='op'>(</span><span class='va'>mtcars</span>, <span class='va'>mtc</span><span class='op'>)</span>
-<span class='va'>zzp</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span>fileext <span class='op'>=</span> <span class='st'>".zip"</span><span class='op'>)</span>
-<span class='fu'><a href='zip_create.html'>zip_create</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>irs</span>, <span class='va'>mtc</span><span class='op'>)</span>, <span class='va'>zzp</span>, junk <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-<span class='fu'>zip_size</span><span class='op'>(</span><span class='va'>zzp</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'><span style='color: #BBBB00;'>ℹ</span><span> deflated: 6.45K, compressed: 2.19K (33.89%)</span></div><div class='input'><span class='fu'>zip_info</span><span class='op'>(</span><span class='va'>zzp</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 2 x 3</span><span>
-#&gt;   path                       size date               
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;fs::path&gt;</span><span>          </span><span style='color: #555555;font-style: italic;'>&lt;fs::bytes&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dttm&gt;</span><span>             
-#&gt; </span><span style='color: #555555;'>1</span><span> file70914efe638.csv       4.71K 2020-12-07 </span><span style='color: #555555;'>21:55:00</span><span>
-#&gt; </span><span style='color: #555555;'>2</span><span> file70911f37145.csv       1.74K 2020-12-07 </span><span style='color: #555555;'>21:55:00</span><span></div><div class='input'><span class='fu'>zip_ls</span><span class='op'>(</span><span class='va'>zzp</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; file70914efe638.csv file70911f37145.csv </div></span></pre>
+    <p>One of five options or an empty string (default):</p><ol>
+<li><p>"lines" for newline characters (separating lines).</p></li>
+<li><p>"words" for words separated by white space.</p></li>
+<li><p>"chars" for individual characters.</p></li>
+<li><p>"bytes" for total bytes, differs with multibyte characters.</p></li>
+<li><p>"max" for the maximum display width of longest line.</p></li>
+</ol>
+
+
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
