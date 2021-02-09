@@ -1,7 +1,7 @@
 library(fs)
 
 p1 <- test_path("test-aws.R")
-p2 <- test_path("test-zip.R")
+p2 <- test_path("test-last.R")
 
 test_that("wc called for default args", {
   wc <- word_count(p1)
