@@ -41,27 +41,12 @@ custom) file.
 
 ``` r
 load.packages(path = NULL, install = FALSE)
-#> ✓ load 20 packages from '/home/kiernan/R/x86_64-pc-linux-gnu-library/3.6/k5/PACKAGES'
+#> ✓ load 20 packages from '/home/kiernan/R/x86_64-pc-linux-gnu-library/4.0/k5/PACKAGES'
 ```
 
-The `zip_*()` functions use `utils::zip()` but return data like
-`fs::file_*()`.
-
-``` r
-z <- file_temp(ext = "zip")
-tmp %>% # can easily pipe into
-  zip_create(z, junk = FALSE)
-zip_info(z)
-#> # A tibble: 3 x 3
-#>   path                        size date               
-#>   <fs::path>           <fs::bytes> <dttm>             
-#> 1 tmp/RtmpvzndAB/A.txt      14.99K 2020-12-03 09:55:00
-#> 2 tmp/RtmpvzndAB/B.txt       7.74K 2020-12-03 09:55:00
-#> 3 tmp/RtmpvzndAB/C.txt      13.71K 2020-12-03 09:55:00
-zip_size(z)
-#> ℹ deflated: 36.4K, compressed: 18.3K (50.12%)
-zip_move(z, tempdir())
-```
+The `zip_*()` functions have been replaced by the
+[zippr](https://github.com/kiernann/zippr) (or
+[zip](https://github.com/r-lib/zip)) package.
 
 There are also some handy shortcuts for the `.Last.value` tool.
 
@@ -77,5 +62,4 @@ write_last()
 ```
 
 <!-- refs: start -->
-
 <!-- refs: end -->

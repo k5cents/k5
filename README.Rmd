@@ -52,24 +52,7 @@ A list of frequently used packages can be loaded from a system (or custom) file.
 load.packages(path = NULL, install = FALSE)
 ```
 
-The `zip_*()` functions use `utils::zip()` but return data like `fs::file_*()`.
-
-```{r temp, echo=FALSE}
-tmp <- path_temp(LETTERS[1:3], ext = "txt")
-for (i in seq_along(tmp)) {
-  n <- runif(1, 100, 1000)
-  write_lines(rnorm(n), tmp[i])
-}
-```
-
-```{r zip}
-z <- file_temp(ext = "zip")
-tmp %>% # can easily pipe into
-  zip_create(z, junk = FALSE)
-zip_info(z)
-zip_size(z)
-zip_move(z, tempdir())
-```
+The `zip_*()` functions have been replaced by the [zippr] (or [zip]) package.
 
 There are also some handy shortcuts for the `.Last.value` tool.
 
@@ -97,4 +80,6 @@ write_last()
 [dl_badge]: https://cranlogs.r-pkg.org/badges/grand-total/k5
 [gh]: https://github.com/kiernann/k5
 [kn]: https://github.com/kiernann
+[zippr]: https://github.com/kiernann/zippr
+[zip]: https://github.com/r-lib/zip
 <!-- refs: end -->
