@@ -12,7 +12,6 @@ refinr
 scales
 clipr
 knitr
-vroom
 rvest
 glue
 here
