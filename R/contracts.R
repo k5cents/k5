@@ -18,6 +18,9 @@
 # contract_convert(c("Sanders", "Biden", "Warren", "Buttigieg"))
 # contract_convert(c("Brokered convention?", "Brokered convention?"))
 contract_convert <- function(x, decimal = FALSE) {
+  if (!is_installed("stringr")) {
+    stop("The stringr package is needed to convert strings")
+  }
   rx <- "(\\d{1,3}(?:,\\d{3})*(?:\\.\\d+)?)"
   p <- all(stringr::str_detect(x, "%"))
   if (length(unique(x)) == 1) {
