@@ -1,5 +1,6 @@
 tidyverse
 lubridate
+jsonlite
 tabulizer
 gluedown
 devtools
@@ -16,4 +17,5 @@ rvest
 glue
 here
 httr
+cli
 fs
