@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Return the last value — last_value • k5</title>
+<title>Copy the last object to the clipboard — copy_last • k5</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +46,9 @@
 
 
 
-<meta property="og:title" content="Return the last value — last_value" />
-<meta property="og:description" content="A function shortcut for accessing .Last.value." />
+<meta property="og:title" content="Copy the last object to the clipboard — copy_last" />
+<meta property="og:description" content="Use clipr::write_clip() to write the last value as a character vector to
+the system clipboard." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -119,34 +120,34 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Return the last value</h1>
+    <h1>Copy the last object to the clipboard</h1>
     <small class="dont-index">Source: <a href='https://github.com/kiernann/k5/blob/master/R/last.R'><code>R/last.R</code></a></small>
-    <div class="hidden name"><code>last_value.Rd</code></div>
+    <div class="hidden name"><code>copy_last.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>A function shortcut for accessing <a href='https://rdrr.io/r/base/Last.value.html'>.Last.value</a>.</p>
+    <p>Use <code><a href='https://rdrr.io/pkg/clipr/man/write_clip.html'>clipr::write_clip()</a></code> to write the last value as a character vector to
+the system clipboard.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>last_value</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>.Last.value</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>copy_last</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>.Last.value</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>The object to return, usually left as base::.Last.value.</p></td>
+      <td><p>The object to view, usually left as base::.Last.value.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>The same <code>.Last.value</code> as <em>before</em> viewing, invisibly.</p>
+    <p>The same <code>.Last.value</code> as <em>before</em> copied, invisibly.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>The value of the internal evaluation of a top-level R expression is always
-assigned to .Last.value (in package:base) before further processing (e.g.,
-printing).</p>
+assigned to <code>.Last.value</code> before further processing (e.g., printing).</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
