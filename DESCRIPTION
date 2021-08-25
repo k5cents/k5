@@ -1,6 +1,6 @@
 Package: k5
 Title: Kiernan Nicholls Miscellaneous
-Version: 0.0.1
+Version: 0.0.2
 Authors@R: 
     person(given = "Kiernan",
            family = "Nicholls",
@@ -23,6 +23,7 @@ Imports:
     usethis (>= 1.6.3),
     utils
 Suggests: 
+    clipr (>= 0.7.1),
     covr (>= 3.5.1),
     crayon (>= 1.3.4),
     rhub (>= 1.1.1),

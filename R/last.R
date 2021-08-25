@@ -116,6 +116,30 @@ view_last <- function(x = .Last.value) {
   }
 }
 
+#' Copy the last object to the clipboard
+#'
+#' Use [clipr::write_clip()] to write the last value as a character vector to
+#' the system clipboard.
+#'
+#' The value of the internal evaluation of a top-level R expression is always
+#' assigned to `.Last.value` before further processing (e.g., printing).
+#'
+#' @param x The object to view, usually left as [base::.Last.value].
+#' @return The same `.Last.value` as _before_ copied, invisibly.
+#' @export
+copy_last <- function(x = .Last.value) {
+  y <- as.character(x)
+  if (!is.null(y)) {
+    if (is_installed("clipr")) {
+      clipr::write_clip(y)
+    } else {
+      stop("The clipr package must be installed to write to clipboard")
+    }
+  } else {
+    ".Last.value could not be converted to a character vector"
+  }
+}
+
 #' Return the last value
 #'
 #' A function shortcut for accessing [.Last.value].
