@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Damage Per Round — dnd_dpr • k5</title>
+<title>Read a CSV file without column guessing — read_csv_dumb • k5</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +46,9 @@
 
 
 
-<meta property="og:title" content="Damage Per Round — dnd_dpr" />
-<meta property="og:description" content="Damage Per Round" />
+<meta property="og:title" content="Read a CSV file without column guessing — read_csv_dumb" />
+<meta property="og:description" content="Use readr::read_csv() without specifying any column types. All columns
+are treated as character strings." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -119,54 +120,32 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Damage Per Round</h1>
-    <small class="dont-index">Source: <a href='https://github.com/kiernann/k5/blob/master/R/dnd-dpr.R'><code>R/dnd-dpr.R</code></a></small>
-    <div class="hidden name"><code>dnd_dpr.Rd</code></div>
+    <h1>Read a CSV file without column guessing</h1>
+    <small class="dont-index">Source: <a href='https://github.com/kiernann/k5/blob/master/R/read.R'><code>R/read.R</code></a></small>
+    <div class="hidden name"><code>read_csv_dumb.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Damage Per Round</p>
+    <p>Use <code><a href='https://readr.tidyverse.org/reference/read_delim.html'>readr::read_csv()</a></code> without specifying <em>any</em> column types. All columns
+are treated as character strings.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>dnd_dpr</span><span class='op'>(</span><span class='va'>M</span>, <span class='va'>A</span>, <span class='va'>D</span>, <span class='va'>B</span>, C <span class='op'>=</span> <span class='fl'>20</span>, adv <span class='op'>=</span> <span class='cn'>NA</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>read_csv_dumb</span><span class='op'>(</span><span class='va'>file</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>M</th>
-      <td><p>Monster</p></td>
+      <th>file</th>
+      <td><p>Either a path to a file, a connection, or literal data.</p></td>
     </tr>
     <tr>
-      <th>A</th>
-      <td><p>Attack: Attack bonus (Proficiency + STR/DEX).</p></td>
-    </tr>
-    <tr>
-      <th>D</th>
-      <td><p>Damage: Average dice roll (e.g., d8 = 4.5).</p></td>
-    </tr>
-    <tr>
-      <th>B</th>
-      <td><p>Bonus: STR/DEX.</p></td>
-    </tr>
-    <tr>
-      <th>C</th>
-      <td><p>Critical: Critical hit rolls (Usually 20, sometimes lower).</p></td>
-    </tr>
-    <tr>
-      <th>adv</th>
-      <td><p>Advantage: <code>NA</code>, <code>TRUE</code>, or <code>FALSE.</code></p></td>
+      <th>...</th>
+      <td><p>Additional arguments passed to <code><a href='https://readr.tidyverse.org/reference/read_delim.html'>readr::read_csv()</a></code>.</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><a href='https://rpgbot.net/dnd5/characters/damage-per-round.html'>https://rpgbot.net/dnd5/characters/damage-per-round.html</a></p></div>
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='r-in'><span class='fu'>dnd_dpr</span><span class='op'>(</span><span class='fl'>15</span>, <span class='fl'>8</span>, <span class='fl'>4.5</span>, <span class='fl'>5</span><span class='op'>)</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 6.875</span>
-</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

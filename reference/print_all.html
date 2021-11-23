@@ -127,9 +127,9 @@ than 10 rows but less than getOption(&quot;max.print&quot;)." />
     </div>
 
     <div class="ref-description">
-    <p>Print up to the <code><a href='https://rdrr.io/r/base/options.html'>getOption("max.print")</a></code> and ask the user if they want to
+    <p>Print up to the <code>getOption("max.print")</code> and ask the user if they want to
 print more than that. This is most useful when printing tibbles with more
-than 10 rows but less than <code><a href='https://rdrr.io/r/base/options.html'>getOption("max.print")</a></code>.</p>
+than 10 rows but less than <code>getOption("max.print")</code>.</p>
     </div>
 
     <pre class="usage"><span class='fu'>print_all</span><span class='op'>(</span><span class='va'>x</span>, ask <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
@@ -143,7 +143,7 @@ than 10 rows but less than <code><a href='https://rdrr.io/r/base/options.html'>g
     </tr>
     <tr>
       <th>ask</th>
-      <td><p>If the length of <code>x</code> exceeds <code><a href='https://rdrr.io/r/base/options.html'>getOption("max.print")</a></code>, should the
+      <td><p>If the length of <code>x</code> exceeds <code>getOption("max.print")</code>, should the
 user be promoted confirm their intention to print everything. If <code>FALSE</code>,
 the maximum is printed without double checking: this can be <strong>extremelly</strong>
 slow. The 'usethis' package must be installed for interactive confirmation.</p></td>
