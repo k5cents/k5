@@ -6,7 +6,7 @@
 \alias{aws_bucket}
 \title{List all objects in an AWS bucket}
 \usage{
-aws_info(bucket = aws_bucket(), prefix = NULL, ...)
+aws_info(bucket = aws_bucket(), prefix = NULL, max = Inf, ...)
 
 aws_ls(bucket = aws_bucket(), prefix = NULL, ...)
 
@@ -19,6 +19,8 @@ that can be retrieved with \code{\link[=aws_bucket]{aws_bucket()}}.}
 
 \item{prefix}{Character string that limits the response to keys that begin
 with the specified prefix.}
+
+\item{max}{Number of objects to return.}
 
 \item{...}{Additional arguments passed to \code{\link[aws.s3:s3HTTP]{aws.s3::s3HTTP()}}.}
 
