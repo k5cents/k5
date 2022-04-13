@@ -4,12 +4,13 @@
 #'
 #' @param dat A data frame with a character column to filter.
 #' @param col The column containing a character vector to input.
-#' @param pattern Pattern to look for, passed to [stringr::str_detect()].
+#' @param pattern Pattern to look for..
+#' @param pattern Additional arguments passed to [stringr::str_detect()].
 #' @return A subset of rows from `dat`.
 #' @importFrom dplyr filter
 #' @importFrom stringr str_detect
 #' @export
-filter_rx <- function(dat, col, pattern) {
+filter_rx <- function(dat, col, pattern, ...) {
   stopifnot(is.data.frame(dat))
-  dplyr::filter(dat, stringr::str_detect({{ col }}, pattern))
+  dplyr::filter(dat, stringr::str_detect({{ col }}, pattern, ...))
 }

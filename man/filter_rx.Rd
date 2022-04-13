@@ -4,14 +4,14 @@
 \alias{filter_rx}
 \title{Filter a data frame by a regular expression}
 \usage{
-filter_rx(dat, col, pattern)
+filter_rx(dat, col, pattern, ...)
 }
 \arguments{
 \item{dat}{A data frame with a character column to filter.}
 
 \item{col}{The column containing a character vector to input.}
 
-\item{pattern}{Pattern to look for, passed to \code{\link[stringr:str_detect]{stringr::str_detect()}}.}
+\item{pattern}{Additional arguments passed to \code{\link[stringr:str_detect]{stringr::str_detect()}}.}
 }
 \value{
 A subset of rows from \code{dat}.
