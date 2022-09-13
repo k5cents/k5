@@ -11,7 +11,9 @@ filter_rx(dat, col, pattern, ...)
 
 \item{col}{The column containing a character vector to input.}
 
-\item{pattern}{Additional arguments passed to \code{\link[stringr:str_detect]{stringr::str_detect()}}.}
+\item{pattern}{Pattern to look for..}
+
+\item{...}{Additional arguments passed to \code{\link[stringr:str_detect]{stringr::str_detect()}}.}
 }
 \value{
 A subset of rows from \code{dat}.
