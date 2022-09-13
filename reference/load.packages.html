@@ -53,9 +53,9 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">load.packages</span><span class="op">(</span>path <span class="op">=</span> <span class="cn">NULL</span>, install <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
-
-<span class="fu">save.packages</span><span class="op">(</span>x <span class="op">=</span> <span class="cn">NULL</span>, path <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">load.packages</span><span class="op">(</span>path <span class="op">=</span> <span class="cn">NULL</span>, install <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">save.packages</span><span class="op">(</span>x <span class="op">=</span> <span class="cn">NULL</span>, path <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -63,11 +63,16 @@
     <dl><dt>path</dt>
 <dd><p>The path to a text file containing package names. If <code>NULL</code>
 (default), then the default list is read from <code>k5/inst/PACKAGES</code>.</p></dd>
+
+
 <dt>install</dt>
 <dd><p>If <code>TRUE</code>, install missing packages.</p></dd>
+
+
 <dt>x</dt>
 <dd><p>A character vector of package names to save. If <code>NULL</code> (default),
 use all currently attached packages.</p></dd>
+
 </dl></div>
 
   </div>
@@ -82,7 +87,7 @@ use all currently attached packages.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

@@ -63,11 +63,11 @@ within the bucket as a named <code>fs_path</code> character vector, like
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">aws_info</span><span class="op">(</span>bucket <span class="op">=</span> <span class="fu">aws_bucket</span><span class="op">(</span><span class="op">)</span>, prefix <span class="op">=</span> <span class="cn">NULL</span>, max <span class="op">=</span> <span class="cn">Inf</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="fu">aws_ls</span><span class="op">(</span>bucket <span class="op">=</span> <span class="fu">aws_bucket</span><span class="op">(</span><span class="op">)</span>, prefix <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="fu">aws_bucket</span><span class="op">(</span>bucket <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">getOption</a></span><span class="op">(</span><span class="st">"aws.bucket"</span><span class="op">)</span>, set <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">aws_info</span><span class="op">(</span>bucket <span class="op">=</span> <span class="fu">aws_bucket</span><span class="op">(</span><span class="op">)</span>, prefix <span class="op">=</span> <span class="cn">NULL</span>, max <span class="op">=</span> <span class="cn">Inf</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">aws_ls</span><span class="op">(</span>bucket <span class="op">=</span> <span class="fu">aws_bucket</span><span class="op">(</span><span class="op">)</span>, prefix <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">aws_bucket</span><span class="op">(</span>bucket <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">getOption</a></span><span class="op">(</span><span class="st">"aws.bucket"</span><span class="op">)</span>, set <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -76,20 +76,29 @@ within the bucket as a named <code>fs_path</code> character vector, like
 <dd><p>Character string with the name of the bucket. If you use the
 same bucket frequently, you can set a default through an option named
 that can be retrieved with <code>aws_bucket()</code>.</p></dd>
+
+
 <dt>prefix</dt>
 <dd><p>Character string that limits the response to keys that begin
 with the specified prefix.</p></dd>
+
+
 <dt>max</dt>
 <dd><p>Number of objects to return.</p></dd>
+
+
 <dt>...</dt>
 <dd><p>Additional arguments passed to <code><a href="https://rdrr.io/pkg/aws.s3/man/s3HTTP.html" class="external-link">aws.s3::s3HTTP()</a></code>.</p></dd>
+
+
 <dt>set</dt>
 <dd><p>If <code>TRUE</code>, print instructions for setting the option.</p></dd>
+
 </dl></div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">aws_info</span><span class="op">(</span><span class="st">"1000genomes"</span>, max <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">aws_info</span><span class="op">(</span><span class="st">"1000genomes"</span>, max <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 10 × 4</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    path                                        type     size time               </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;fs::path&gt;</span>                                  <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> <span style="color: #949494; font-style: italic;">&lt;fs::b&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span>             </span>
@@ -103,8 +112,8 @@ with the specified prefix.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> …ed/data/ERR3988762/HG00408.final.cram.crai file    1.31M 2021-12-07 <span style="color: #949494;">18:58:42</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> …related/data/ERR3988763/HG00418.final.cram file    15.2G 2020-05-19 <span style="color: #949494;">17:33:12</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> …ed/data/ERR3988763/HG00418.final.cram.crai file    1.33M 2021-12-07 <span style="color: #949494;">18:59:12</span></span>
-<span class="r-in"><span class="fu">aws_ls</span><span class="op">(</span><span class="st">"irs-form-990"</span>, max <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 200931393493000150_public.xml</span>
+<span class="r-in"><span><span class="fu">aws_ls</span><span class="op">(</span><span class="st">"irs-form-990"</span>, max <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> character(0)</span>
 </code></pre></div>
     </div>
   </div>
@@ -119,7 +128,7 @@ with the specified prefix.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>
