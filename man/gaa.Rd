@@ -3,9 +3,9 @@
 \docType{data}
 \name{gaa}
 \alias{gaa}
-\title{GAA Team Abbreviations by Year}
+\title{GAA Team Abbreviations by Season and Team ID}
 \format{
-A data frame with 64 rows and 3 variables:
+A data frame with 74 rows and 3 variables:
 \describe{
 \item{seasonId}{The fantasy season integer}
 \item{teamId}{The team ID integer}
@@ -17,6 +17,6 @@ A data frame with 64 rows and 3 variables:
 gaa
 }
 \description{
-GAA Team Abbreviations by Year
+GAA Team Abbreviations by Season and Team ID
 }
 \keyword{datasets}

@@ -1,6 +1,6 @@
-#' GAA Team Abbreviations by Year
+#' GAA Team Abbreviations by Season and Team ID
 #'
-#' @format A data frame with 64 rows and 3 variables:
+#' @format A data frame with 74 rows and 3 variables:
 #' \describe{
 #'   \item{seasonId}{The fantasy season integer}
 #'   \item{teamId}{The team ID integer}
