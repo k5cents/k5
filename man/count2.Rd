@@ -2,9 +2,12 @@
 % Please edit documentation in R/count.R
 \name{count2}
 \alias{count2}
+\alias{count_vec}
 \title{Count the way you want}
 \usage{
 count2(x, ..., wt = NULL, sort = TRUE, prop = TRUE, sum = NULL)
+
+count_vec(x, sort = TRUE, prop = TRUE, sum = NULL)
 }
 \arguments{
 \item{x}{A data frame.}

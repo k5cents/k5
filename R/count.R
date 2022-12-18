@@ -35,7 +35,7 @@ count2 <- function(x, ..., wt = NULL, sort = TRUE, prop = TRUE, sum = NULL) {
   as_tibble(df)
 }
 
-#' @rdname count
+#' @rdname count2
 #' @export
 count_vec <- function(x, sort = TRUE, prop = TRUE, sum = NULL) {
   stopifnot(is.vector(x))
