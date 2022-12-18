@@ -11,7 +11,7 @@ view_firefox <- function(html) {
   txt <- as.character(html)
   writeLines(txt, tmp)
   system2(
-    command = "firefox",
+    command = Sys.which("firefox"),
     args = tmp
   )
 }
