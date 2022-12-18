@@ -2,9 +2,12 @@
 % Please edit documentation in R/count.R
 \name{count}
 \alias{count}
+\alias{count_vec}
 \title{Count the way you want}
 \usage{
-count(x, ..., wt = NULL, sort = TRUE, prop = TRUE)
+count(x, ..., wt = NULL, sort = TRUE, prop = TRUE, sum = NULL)
+
+count_vec(x, sort = TRUE, prop = TRUE, sum = NULL)
 }
 \arguments{
 \item{x}{A data frame.}
@@ -16,6 +19,8 @@ count(x, ..., wt = NULL, sort = TRUE, prop = TRUE)
 \item{sort}{If \code{TRUE}, will show the largest groups at the top.}
 
 \item{prop}{If \code{TRUE}, compute the fraction of marginal table.}
+
+\item{sum}{Column to replace with a cumulative sum (\code{n}, \code{p}, or \code{np}).}
 }
 \value{
 A tibble of element counts

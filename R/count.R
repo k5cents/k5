@@ -9,12 +9,13 @@
 #' @param wt Frequency weights.
 #' @param sort If `TRUE`, will show the largest groups at the top.
 #' @param prop If `TRUE`, compute the fraction of marginal table.
+#' @param sum Column to replace with a cumulative sum (`n`, `p`, or `np`).
 #' @examples
 #' count(iris, Species)
 #' @importFrom tibble as_tibble
 #' @return A tibble of element counts
 #' @export
-count <- function(x, ..., wt = NULL, sort = TRUE, prop = TRUE) {
+count <- function(x, ..., wt = NULL, sort = TRUE, prop = TRUE, sum = NULL) {
   if (is.null(wt)) {
     df <- dplyr::count(x = x, ..., sort = sort)
   } else {
@@ -23,26 +24,21 @@ count <- function(x, ..., wt = NULL, sort = TRUE, prop = TRUE) {
   if (prop) {
     df$p <- prop.table(df$n)
   }
+  if (!is.null(sum)) {
+    sum <- match.arg(sum, c("n", "p", "np", "pn"))
+    if (!prop & grepl(pattern = "p", x = sum)) {
+      stop("Summing column `p` but `prop` is FALSE", call. = FALSE)
+    }
+    sum <- strsplit(sum, "")[[1]]
+    df[sum] <- lapply(df[sum], cumsum)
+  }
   as_tibble(df)
 }
 
-#' Count values in a character vector
-#'
-#' Method for [dplyr::count()] (or [count()] wrapper).
-#'
-#' @param x A character vector.
-#' @param sort If `TRUE`, will show the largest groups at the top.
-#' @param prop If `TRUE`, compute the fraction of marginal table.
-#' @examples
-#' x <- sample(LETTERS)[rpois(1000, 10)]
-#' count(x)
-#' @importFrom tibble as_tibble
-#' @return A tibble of element counts
+#' @rdname count
 #' @export
-count.character <- function(x, sort = TRUE, prop = TRUE) {
-  if (!is.character(x)) {
-    stop("x must be a character vector", call. = FALSE)
-  }
+count_vec <- function(x, sort = TRUE, prop = TRUE, sum = NULL) {
+  stopifnot(is.vector(x))
   tb <- table(x)
   if (sort) {
     tb <- rev(sort(tb))
@@ -50,6 +46,14 @@ count.character <- function(x, sort = TRUE, prop = TRUE) {
   df <- as_tibble(tb)
   if (prop) {
     df$p <- unclass(prop.table(df$n))
+  }
+  if (!is.null(sum)) {
+    sum <- match.arg(sum, c("n", "p", "np", "pn"))
+    if (!prop & grepl(pattern = "p", x = sum)) {
+      stop("Summing column `p` but `prop` is FALSE", call. = FALSE)
+    }
+    sum <- strsplit(sum, "")[[1]]
+    df[sum] <- lapply(df[sum], cumsum)
   }
   df
 }
