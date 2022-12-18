@@ -26,7 +26,7 @@ word_count <- function(path, count = "") {
   }
   opt2 <- paste0("--", count)
   out <- system2(
-    command = "wc",
+    command = Sys.which("wc"),
     args = c(
       opt2,
       path
@@ -64,7 +64,7 @@ word_count <- function(path, count = "") {
 
 find_cmd <- function(cmd, arg = "--version") {
   cmd_test <- tryCatch(
-    expr = system2(cmd, arg, stdout = TRUE, stderr = NULL),
+    expr = system2(Sys.which(cmd), arg, stdout = TRUE, stderr = NULL),
     error = function(e) return(NULL)
   )
   !is.null(cmd_test)
