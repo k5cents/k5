@@ -36,17 +36,48 @@ remotes::install_github("kiernann/k5")
 library(k5)
 ```
 
-A list of frequently used packages can be loaded from a system (or
-custom) file.
+A list of frequently used packages can be loaded from a file.
 
 ``` r
 load.packages(path = NULL, install = FALSE)
-#> ✓ load 20 packages from '/home/kiernan/R/x86_64-pc-linux-gnu-library/4.0/k5/PACKAGES'
+#> ✔ load 20 packages from
+#> '/home/kiernan/R/x86_64-pc-linux-gnu-library/4.2/k5/PACKAGES'
 ```
 
-The `zip_*()` functions have been replaced by the
-[zippr](https://github.com/kiernann/zippr) (or
-[zip](https://github.com/r-lib/zip)) package.
+Some functions wrap common combos like `count(is.na(x))` or
+`sum(x %in% y)`.
+
+``` r
+x <- c("VT", "NH", "ZZ", "ME", NA)
+count_in(x, state.abb)
+#> [1] 3
+count_out(x, state.abb)
+#> [1] 1
+prop_na(x)
+#> [1] 0.2
+na_out(x, state.abb)
+#> [1] "VT" "NH" NA   "ME" NA
+```
+
+Some functions wrap functions from other packages with different
+defaults.
+
+``` r
+count(mtcars, cyl)
+#>   cyl  n
+#> 1   4 11
+#> 2   6  7
+#> 3   8 14
+
+# sort and add fraction
+count2(mtcars, cyl)
+#> # A tibble: 3 × 3
+#>     cyl     n     p
+#>   <dbl> <int> <dbl>
+#> 1     8    14 0.438
+#> 2     4    11 0.344
+#> 3     6     7 0.219
+```
 
 There are also some handy shortcuts for the `.Last.value` tool.
 

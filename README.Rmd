@@ -1,5 +1,7 @@
 ---
 output: github_document
+editor_options: 
+  chunk_output_type: console
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -44,15 +46,33 @@ remotes::install_github("kiernann/k5")
 
 ```{r lib}
 library(k5)
+packageVersion("k5")
 ```
 
-A list of frequently used packages can be loaded from a system (or custom) file.
+A list of frequently used packages can be loaded from a file.
 
 ```{r load}
 load.packages(path = NULL, install = FALSE)
 ```
 
-The `zip_*()` functions have been replaced by the [zippr] (or [zip]) package.
+Some functions wrap common combos like `count(is.na(x))` or `sum(x %in% y)`.
+
+```{r counter}
+x <- c("VT", "NH", "ZZ", "ME", NA)
+count_in(x, state.abb)
+count_out(x, state.abb)
+prop_na(x)
+na_out(x, state.abb)
+```
+
+Some functions wrap functions from other packages with different defaults.
+
+```{r count}
+count(mtcars, cyl)
+
+# sort and add fraction
+count2(mtcars, cyl)
+```
 
 There are also some handy shortcuts for the `.Last.value` tool.
 

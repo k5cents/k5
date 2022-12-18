@@ -1,3 +1,7 @@
+# k5 0.0.4
+
+* Import some helpful generic functions from campfin package.
+
 # k5 0.0.1
 
 * Changed `aws_ls()` to `aws_info()` to match `fs::dir_info()`.
