@@ -19,13 +19,13 @@
     <loc>/reference/aws_info.html</loc>
   </url>
   <url>
-    <loc>/reference/check_for_cran2.html</loc>
-  </url>
-  <url>
     <loc>/reference/contract_convert.html</loc>
   </url>
   <url>
     <loc>/reference/copy_last.html</loc>
+  </url>
+  <url>
+    <loc>/reference/count2.html</loc>
   </url>
   <url>
     <loc>/reference/count_diff.html</loc>
@@ -38,6 +38,12 @@
   </url>
   <url>
     <loc>/reference/count_out.html</loc>
+  </url>
+  <url>
+    <loc>/reference/file_age.html</loc>
+  </url>
+  <url>
+    <loc>/reference/file_encoding.html</loc>
   </url>
   <url>
     <loc>/reference/filter_rx.html</loc>
@@ -85,7 +91,7 @@
     <loc>/reference/prop_out.html</loc>
   </url>
   <url>
-    <loc>/reference/read_csv_dumb.html</loc>
+    <loc>/reference/read_delim_dumb.html</loc>
   </url>
   <url>
     <loc>/reference/view_firefox.html</loc>
