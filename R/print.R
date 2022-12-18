@@ -22,8 +22,10 @@ print_all <- function(x, ask = TRUE) {
       if (is_installed("usethis")) {
         sure <- usethis::ui_yeah(
           x = "Length exceedes {usethis::ui_code('getOption(\"max.print\")')}",
-          yes = glue::glue("Print {crayon::red('all')}: {scales::comma(n)}"),
-          no = glue::glue("Print max: {scales::comma(max)}")
+          yes = glue::glue(
+            "Print {crayon::red('all')}: {prettyNum(n, big.mark = ',')}"
+          ),
+          no = glue::glue("Print max: {prettyNum(max, big.mark = ',')}")
         )
       } else {
         stop("Package \"usethis\" needed for confirmation", call. = FALSE)
