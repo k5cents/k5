@@ -8,8 +8,19 @@
 #' @export
 #' @importFrom magrittr %>%
 #' @usage lhs \%>\% rhs
+#' @param lhs A value or the magrittr placeholder.
+#' @param rhs A function call using the magrittr semantics.
+#' @return The result of calling `rhs(lhs)`.
 NULL
 
 is_installed <- function(pkg) {
   isTRUE(requireNamespace(pkg, quietly = TRUE))
+}
+
+as_tibble <- function(x) {
+  if (is_installed("tibble")) {
+    tibble::as_tibble(x)
+  } else {
+    x
+  }
 }
