@@ -4,6 +4,7 @@
 #' are treated as character strings.
 #'
 #' @param file Either a path to a file, a connection, or literal data.
+#' @param delim Single character used to separate fields within a record.
 #' @param ... Additional arguments passed to [readr::read_csv()].
 #' @importFrom readr read_csv read_tsv read_delim cols
 #' @export

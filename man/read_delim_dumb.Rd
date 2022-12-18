@@ -15,6 +15,8 @@ read_tsv_dumb(file, ...)
 \arguments{
 \item{file}{Either a path to a file, a connection, or literal data.}
 
+\item{delim}{Single character used to separate fields within a record.}
+
 \item{...}{Additional arguments passed to \code{\link[readr:read_delim]{readr::read_csv()}}.}
 }
 \description{
