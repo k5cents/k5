@@ -11,11 +11,11 @@
 #' @param prop If `TRUE`, compute the fraction of marginal table.
 #' @param sum Column to replace with a cumulative sum (`n`, `p`, or `np`).
 #' @examples
-#' count(iris, Species)
+#' count2(iris, Species)
 #' @importFrom tibble as_tibble
 #' @return A tibble of element counts
 #' @export
-count <- function(x, ..., wt = NULL, sort = TRUE, prop = TRUE, sum = NULL) {
+count2 <- function(x, ..., wt = NULL, sort = TRUE, prop = TRUE, sum = NULL) {
   if (is.null(wt)) {
     df <- dplyr::count(x = x, ..., sort = sort)
   } else {
