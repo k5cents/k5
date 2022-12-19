@@ -76,11 +76,11 @@
 <div class="page-header"><h1 id="k5-">k5 <img src="reference/figures/logo.png" align="right" height="139"><a class="anchor" aria-label="anchor" href="#k5-"></a>
 </h1></div>
 <!-- badges: start -->
-<p>The goal of ‘k5’ is to offer miscellaneous quality of life functions used by <a href="https://github.com/kiernann" class="external-link">Kiernan Nicholls</a> during interactive programming. They make things easier for me but are <em>bad</em> for scripts and packages.</p>
+<p>The goal of <code>k5</code> is to offer miscellaneous quality of life functions used by <a href="https://github.com/kiernann" class="external-link">Kiernan Nicholls</a> during interactive programming. They make things easier for me but are <em>bad</em> for scripts and packages.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<p>You can install the development version of ‘k5’ from <a href="https://github.com/kiernann/k5" class="external-link">GitHub</a>:</p>
+<p>You can install the development version of <code>k5</code> from <a href="https://github.com/kiernann/k5" class="external-link">GitHub</a>:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># install.packages("remotes")</span></span>
 <span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"kiernann/k5"</span><span class="op">)</span></span></code></pre></div>
@@ -89,23 +89,23 @@
 <h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
 </h2>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/kiernann/k5" class="external-link">k5</a></span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/kiernann/k5" class="external-link">k5</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/packageDescription.html" class="external-link">packageVersion</a></span><span class="op">(</span><span class="st">"k5"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] '0.0.3'</span></span></code></pre></div>
 <p>A list of frequently used packages can be loaded from a file.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/load.packages.html">load.packages</a></span><span class="op">(</span>path <span class="op">=</span> <span class="cn">NULL</span>, install <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; ✔ load 20 packages from</span></span>
 <span><span class="co">#&gt; '/home/kiernan/R/x86_64-pc-linux-gnu-library/4.2/k5/PACKAGES'</span></span></code></pre></div>
-<p>Some functions wrap common combos like <code>count(is.na(x))</code> or <code>sum(x %in% y)</code>.</p>
+<p>Some functions wrap common combos like <code>sum(is.na(x))</code> or <code>mean(x %in% y)</code>.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"VT"</span>, <span class="st">"NH"</span>, <span class="st">"ZZ"</span>, <span class="st">"ME"</span>, <span class="cn">NA</span><span class="op">)</span></span>
-<span><span class="fu"><a href="reference/count_in.html">count_in</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">state.abb</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 3</span></span>
 <span><span class="fu"><a href="reference/count_out.html">count_out</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">state.abb</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 1</span></span>
-<span><span class="fu"><a href="reference/prop_na.html">prop_na</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 0.2</span></span>
 <span><span class="fu"><a href="reference/na_out.html">na_out</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">state.abb</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "VT" "NH" NA   "ME" NA</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] "VT" "NH" NA   "ME" NA</span></span>
+<span><span class="fu"><a href="reference/prop_na.html">prop_na</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 0.2</span></span></code></pre></div>
 <p>Some functions wrap functions from other packages with different defaults.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">count</span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">cyl</span><span class="op">)</span></span>
