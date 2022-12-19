@@ -15,14 +15,14 @@ coverage](https://codecov.io/gh/kiernann/k5/branch/master/graph/badge.svg)](http
 status](https://github.com/kiernann/k5/workflows/R-CMD-check/badge.svg)](https://github.com/kiernann/k5/actions)
 <!-- badges: end -->
 
-The goal of ‘k5’ is to offer miscellaneous quality of life functions
+The goal of `k5` is to offer miscellaneous quality of life functions
 used by [Kiernan Nicholls](https://github.com/kiernann) during
 interactive programming. They make things easier for me but are *bad*
 for scripts and packages.
 
 ## Installation
 
-You can install the development version of ‘k5’ from
+You can install the development version of `k5` from
 [GitHub](https://github.com/kiernann/k5):
 
 ``` r
@@ -34,6 +34,8 @@ remotes::install_github("kiernann/k5")
 
 ``` r
 library(k5)
+packageVersion("k5")
+#> [1] '0.0.3'
 ```
 
 A list of frequently used packages can be loaded from a file.
@@ -44,19 +46,17 @@ load.packages(path = NULL, install = FALSE)
 #> '/home/kiernan/R/x86_64-pc-linux-gnu-library/4.2/k5/PACKAGES'
 ```
 
-Some functions wrap common combos like `count(is.na(x))` or
-`sum(x %in% y)`.
+Some functions wrap common combos like `sum(is.na(x))` or
+`mean(x %in% y)`.
 
 ``` r
 x <- c("VT", "NH", "ZZ", "ME", NA)
-count_in(x, state.abb)
-#> [1] 3
 count_out(x, state.abb)
 #> [1] 1
-prop_na(x)
-#> [1] 0.2
 na_out(x, state.abb)
 #> [1] "VT" "NH" NA   "ME" NA
+prop_na(x)
+#> [1] 0.2
 ```
 
 Some functions wrap functions from other packages with different
