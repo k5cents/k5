@@ -1,5 +1,9 @@
 # k5 0.0.5
 
+* Add some more basic functions tests.
+* Correct misspellings and add word list.
+* Add cran-comments file with rhub checks.
+
 # k5 0.0.4
 
 * Import some helpful generic functions from campfin package.
