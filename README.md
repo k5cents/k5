@@ -6,11 +6,9 @@
 <!-- badges: start -->
 
 [![Lifecycle:
-experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
-[![CRAN
-status](https://www.r-pkg.org/badges/version/k5)](https://CRAN.R-project.org/package=k5)
+experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html)
 [![Codecov test
-coverage](https://codecov.io/gh/kiernann/k5/branch/master/graph/badge.svg)](https://codecov.io/gh/kiernann/k5?branch=master)
+coverage](https://codecov.io/gh/kiernann/k5/branch/master/graph/badge.svg)](https://app.codecov.io/gh/kiernann/k5?branch=master)
 [![R build
 status](https://github.com/kiernann/k5/workflows/R-CMD-check/badge.svg)](https://github.com/kiernann/k5/actions)
 <!-- badges: end -->
@@ -35,42 +33,40 @@ remotes::install_github("kiernann/k5")
 ``` r
 library(k5)
 packageVersion("k5")
-#> [1] '0.0.3'
+#> [1] '0.0.4'
 ```
 
 A list of frequently used packages can be loaded from a file.
 
 ``` r
 load.packages(path = NULL, install = FALSE)
-#> ✔ load 20 packages from
+#> ✔ load 21 packages from
 #> '/home/kiernan/R/x86_64-pc-linux-gnu-library/4.2/k5/PACKAGES'
 ```
 
-Some functions wrap common combos like `sum(is.na(x))` or
-`mean(x %in% y)`.
+Some functions wrap common combos like `mean(x %in% y)` or
+`sum(is.na(x))`.
 
 ``` r
 x <- c("VT", "NH", "ZZ", "ME", NA)
-count_out(x, state.abb)
+prop_in(x, state.abb)
+#> [1] 0.75
+count_na(x)
 #> [1] 1
-na_out(x, state.abb)
-#> [1] "VT" "NH" NA   "ME" NA
-prop_na(x)
-#> [1] 0.2
 ```
 
 Some functions wrap functions from other packages with different
 defaults.
 
 ``` r
-count(mtcars, cyl)
+dplyr::count(mtcars, cyl)
 #>   cyl  n
 #> 1   4 11
 #> 2   6  7
 #> 3   8 14
 
 # sort and add fraction
-count2(mtcars, cyl)
+k5::count2(mtcars, cyl)
 #> # A tibble: 3 × 3
 #>     cyl     n     p
 #>   <dbl> <int> <dbl>
