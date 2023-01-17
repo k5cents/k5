@@ -11,7 +11,7 @@ print_all(x, ask = TRUE)
 
 \item{ask}{If the length of \code{x} exceeds \code{getOption("max.print")}, should the
 user be promoted confirm their intention to print everything. If \code{FALSE},
-the maximum is printed without double checking: this can be \strong{extremelly}
+the maximum is printed without double checking: this can be \strong{extremely}
 slow. The 'usethis' package must be installed for interactive confirmation.}
 }
 \value{

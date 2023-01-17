@@ -10,5 +10,5 @@ view_firefox(html)
 \item{html}{An object which has the class \code{xml_document}, often from rvest.}
 }
 \description{
-Take an XML document opbject, write to an HTML file, and open in Firefox.
+Take an XML document object, write to an HTML file, and open in Firefox.
 }

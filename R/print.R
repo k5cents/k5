@@ -7,7 +7,7 @@
 #' @param x Object to print, typically a data frame or vector.
 #' @param ask If the length of `x` exceeds `getOption("max.print")`, should the
 #'   user be promoted confirm their intention to print everything. If `FALSE`,
-#'   the maximum is printed without double checking: this can be **extremelly**
+#'   the maximum is printed without double checking: this can be **extremely**
 #'   slow. The 'usethis' package must be installed for interactive confirmation.
 #' @return The object x (invisibly)
 #' @export

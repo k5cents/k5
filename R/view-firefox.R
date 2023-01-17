@@ -1,6 +1,6 @@
 #' View an HTML document in Firefox
 #'
-#' Take an XML document opbject, write to an HTML file, and open in Firefox.
+#' Take an XML document object, write to an HTML file, and open in Firefox.
 #'
 #' @param html An object which has the class `xml_document`, often from rvest.
 #' @export
