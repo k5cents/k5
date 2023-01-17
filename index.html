@@ -40,7 +40,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">k5</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.5</span>
       </span>
     </div>
 
@@ -76,6 +76,7 @@
 <div class="page-header"><h1 id="k5-">k5 <img src="reference/figures/logo.png" align="right" height="139"><a class="anchor" aria-label="anchor" href="#k5-"></a>
 </h1></div>
 <!-- badges: start -->
+
 <p>The goal of <code>k5</code> is to offer miscellaneous quality of life functions used by <a href="https://github.com/kiernann" class="external-link">Kiernan Nicholls</a> during interactive programming. They make things easier for me but are <em>bad</em> for scripts and packages.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
@@ -91,31 +92,29 @@
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/kiernann/k5" class="external-link">k5</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/packageDescription.html" class="external-link">packageVersion</a></span><span class="op">(</span><span class="st">"k5"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] '0.0.3'</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] '0.0.4'</span></span></code></pre></div>
 <p>A list of frequently used packages can be loaded from a file.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/load.packages.html">load.packages</a></span><span class="op">(</span>path <span class="op">=</span> <span class="cn">NULL</span>, install <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span><span class="co">#&gt; ✔ load 20 packages from</span></span>
+<span><span class="co">#&gt; ✔ load 21 packages from</span></span>
 <span><span class="co">#&gt; '/home/kiernan/R/x86_64-pc-linux-gnu-library/4.2/k5/PACKAGES'</span></span></code></pre></div>
-<p>Some functions wrap common combos like <code>sum(is.na(x))</code> or <code>mean(x %in% y)</code>.</p>
+<p>Some functions wrap common combos like <code>mean(x %in% y)</code> or <code>sum(is.na(x))</code>.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"VT"</span>, <span class="st">"NH"</span>, <span class="st">"ZZ"</span>, <span class="st">"ME"</span>, <span class="cn">NA</span><span class="op">)</span></span>
-<span><span class="fu"><a href="reference/count_out.html">count_out</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">state.abb</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 1</span></span>
-<span><span class="fu"><a href="reference/na_out.html">na_out</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">state.abb</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "VT" "NH" NA   "ME" NA</span></span>
-<span><span class="fu"><a href="reference/prop_na.html">prop_na</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 0.2</span></span></code></pre></div>
+<span><span class="fu"><a href="reference/prop_in.html">prop_in</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">state.abb</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 0.75</span></span>
+<span><span class="fu"><a href="reference/count_na.html">count_na</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 1</span></span></code></pre></div>
 <p>Some functions wrap functions from other packages with different defaults.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">count</span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">cyl</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html" class="external-link">count</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">cyl</span><span class="op">)</span></span>
 <span><span class="co">#&gt;   cyl  n</span></span>
 <span><span class="co">#&gt; 1   4 11</span></span>
 <span><span class="co">#&gt; 2   6  7</span></span>
 <span><span class="co">#&gt; 3   8 14</span></span>
 <span></span>
 <span><span class="co"># sort and add fraction</span></span>
-<span><span class="fu"><a href="reference/count2.html">count2</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">cyl</span><span class="op">)</span></span>
+<span><span class="fu">k5</span><span class="fu">::</span><span class="fu"><a href="reference/count2.html">count2</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">cyl</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 3 × 3</span></span>
 <span><span class="co">#&gt;     cyl     n     p</span></span>
 <span><span class="co">#&gt;   &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt;</span></span>
@@ -132,7 +131,8 @@
 <span><span class="fu"><a href="reference/write_last.html">write_last</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; ℹ `.Last.value` has class 'character'</span></span>
 <span><span class="co">#&gt; ✓ Saved line-separated file '/tmp/RtmpFTaCH6/file151235b67c89.txt' (9.19K)</span></span></code></pre></div>
-<!-- refs: start --><!-- refs: end -->
+<!-- refs: start -->
+<!-- refs: end -->
 </div>
 </div>
   </div>
@@ -172,9 +172,8 @@
 <div class="dev-status">
 <h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://www.tidyverse.org/lifecycle/#experimental" class="external-link"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
-<li><a href="https://CRAN.R-project.org/package=k5" class="external-link"><img src="https://www.r-pkg.org/badges/version/k5" alt="CRAN status"></a></li>
-<li><a href="https://codecov.io/gh/kiernann/k5?branch=master" class="external-link"><img src="https://codecov.io/gh/kiernann/k5/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
+<li><a href="https://lifecycle.r-lib.org/articles/stages.html" class="external-link"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
+<li><a href="https://app.codecov.io/gh/kiernann/k5?branch=master" class="external-link"><img src="https://codecov.io/gh/kiernann/k5/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
 <li><a href="https://github.com/kiernann/k5/actions" class="external-link"><img src="https://github.com/kiernann/k5/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
 </ul>
 </div>
