@@ -1,6 +1,3 @@
-library(testthat)
-library(campfin)
-
 test_that("the %out% infix opperator works as an invert of %in%", {
   x <- c("VT", "DC")
   a <- x %out% state.abb
