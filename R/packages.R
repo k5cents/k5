@@ -5,6 +5,7 @@
 #' @param install If `TRUE`, install missing packages.
 #' @param x A character vector of package names to save. If `NULL` (default),
 #'   use all currently attached packages.
+#' @return The list of packages, invisibly.
 #' @export
 load.packages <- function(path = NULL, install = FALSE) {
   if (is.null(path)) {

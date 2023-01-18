@@ -26,6 +26,9 @@ with the specified prefix.}
 
 \item{set}{If \code{TRUE}, print instructions for setting the option.}
 }
+\value{
+A list of objects on the AWS bucket.
+}
 \description{
 \code{\link[=aws_info]{aws_info()}} uses \code{\link[aws.s3:get_bucket]{aws.s3::get_bucket_df()}} to return a tibble of stored
 objects in a remote bucket, like \code{\link[fs:dir_ls]{fs::dir_info()}} returns information on a

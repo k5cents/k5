@@ -19,6 +19,9 @@ read_tsv_dumb(file, ...)
 
 \item{...}{Additional arguments passed to \code{\link[readr:read_delim]{readr::read_delim()}}.}
 }
+\value{
+A tibble data frame read from the file.
+}
 \description{
 Use \code{\link[readr:read_delim]{readr::read_delim()}} without specifying \emph{any} column types. All columns
 are treated as character strings.

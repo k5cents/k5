@@ -18,6 +18,9 @@ save.packages(x = NULL, path = tempfile())
 \item{x}{A character vector of package names to save. If \code{NULL} (default),
 use all currently attached packages.}
 }
+\value{
+The list of packages, invisibly.
+}
 \description{
 Save and load packages from file
 }

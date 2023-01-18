@@ -7,6 +7,7 @@
 #' @param delim Single character used to separate fields within a record.
 #' @param ... Additional arguments passed to [readr::read_delim()].
 #' @importFrom readr read_csv read_tsv read_delim cols
+#' @return A tibble data frame read from the file.
 #' @export
 read_delim_dumb <- function(file, delim = c(",", "\t", "|"), ...) {
   readr::read_delim(

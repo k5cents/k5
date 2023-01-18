@@ -2,11 +2,13 @@ Package: k5
 Title: Kiernan Nicholls Miscellaneous
 Version: 0.0.5
 Authors@R: 
-    person(given = "Kiernan",
-           family = "Nicholls",
-           role = c("aut", "cre"),
-           email = "kiernann@protonmail.com")
-Description: Quality of life functions used by Kiernan Nicholls.
+    person("Kiernan", "Nicholls", , "kiernann@protonmail.com", role = c("aut", "cre"))
+Description: Quality of life functions for interactive programming.
+    Shortcuts for common combinations of functions or different default
+    arguments. Not to be used in production level scripts, but useful for
+    exploring and quickly manipulating data for easy analysis. Also
+    imports a variety of packages to faciliate the installation of those
+    imported packages on the host machine.
 License: GPL-3
 URL: https://github.com/kiernann/k5, https://kiernann.github.io/k5/
 BugReports: https://github.com/kiernann/k5/issues
@@ -14,8 +16,8 @@ Depends:
     R (>= 2.10)
 Imports: 
     aws.s3 (>= 0.3.21),
-    dplyr (>= 1.0.10),
     clipr (>= 0.8.0),
+    dplyr (>= 1.0.10),
     fs (>= 1.5.2),
     ggplot2 (>= 3.4.0),
     glue (>= 1.6.2),

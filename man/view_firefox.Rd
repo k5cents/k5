@@ -9,6 +9,9 @@ view_firefox(html)
 \arguments{
 \item{html}{An object which has the class \code{xml_document}, often from rvest.}
 }
+\value{
+The html object, invisibly.
+}
 \description{
 Take an XML document object, write to an HTML file, and open in Firefox.
 }

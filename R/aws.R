@@ -23,6 +23,7 @@
 #' @importFrom fs as_fs_path as_fs_bytes
 #' @importFrom readr parse_datetime
 #' @importFrom tibble as_tibble
+#' @return A list of objects on the AWS bucket.
 #' @export
 aws_info <- function(bucket = aws_bucket(), prefix = NULL, max = Inf, ...) {
   stopifnot(!is.null(bucket))

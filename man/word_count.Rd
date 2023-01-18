@@ -11,6 +11,9 @@ word_count(path, count = "")
 
 \item{count}{The type of element to count, see details.}
 }
+\value{
+A data frame of counts by file.
+}
 \description{
 Invoke system tool to print newline, word, and byte counts for each file.
 }

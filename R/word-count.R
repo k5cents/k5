@@ -12,6 +12,7 @@
 #' @param path Character vector of file paths.
 #' @param count The type of element to count, see details.
 #' @importFrom utils read.table
+#' @return A data frame of counts by file.
 #' @export
 word_count <- function(path, count = "") {
   if (!find_cmd("wc")) {
