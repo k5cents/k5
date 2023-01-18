@@ -3,6 +3,7 @@
 * Add some more basic functions tests.
 * Correct misspellings and add word list.
 * Add cran-comments file with rhub checks.
+* Add `read_delim_clip()` to read from clipboard.
 
 # k5 0.0.4
 

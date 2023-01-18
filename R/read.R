@@ -5,7 +5,7 @@
 #'
 #' @param file Either a path to a file, a connection, or literal data.
 #' @param delim Single character used to separate fields within a record.
-#' @param ... Additional arguments passed to [readr::read_csv()].
+#' @param ... Additional arguments passed to [readr::read_delim()].
 #' @importFrom readr read_csv read_tsv read_delim cols
 #' @export
 read_delim_dumb <- function(file, delim = c(",", "\t", "|"), ...) {
@@ -23,8 +23,9 @@ read_delim_dumb <- function(file, delim = c(",", "\t", "|"), ...) {
 #' @rdname read_delim_dumb
 #' @export
 read_csv_dumb <- function(file, ...) {
-  readr::read_csv(
+  readr::read_delim(
     file = file,
+    delim = ",",
     col_types = readr::cols(
       .default = "c"
     ),
@@ -36,8 +37,9 @@ read_csv_dumb <- function(file, ...) {
 #' @rdname read_delim_dumb
 #' @export
 read_tsv_dumb <- function(file, ...) {
-  readr::read_tsv(
+  readr::read_delim(
     file = file,
+    delim = "\t",
     col_types = readr::cols(
       .default = "c"
     ),
@@ -46,4 +48,20 @@ read_tsv_dumb <- function(file, ...) {
   )
 }
 
-
+#' Read a table from the clipboard
+#'
+#' Use [readr::read_delim()] on a string copied to the clipboard. Defaults to
+#' tab separator like given when copying cells from spreadsheets.
+#'
+#' @param delim Single character used to separate fields within a record.
+#' @param ... Additional arguments passed to [readr::read_delim()].
+#' @importFrom readr read_delim
+#' @importFrom clipr read_clip
+#' @export
+read_delim_clip <- function(delim = "\t", ...) {
+  readr::read_delim(
+    file = I(clipr::read_clip()),
+    delim = delim,
+    ...
+  )
+}

@@ -17,7 +17,7 @@ read_tsv_dumb(file, ...)
 
 \item{delim}{Single character used to separate fields within a record.}
 
-\item{...}{Additional arguments passed to \code{\link[readr:read_delim]{readr::read_csv()}}.}
+\item{...}{Additional arguments passed to \code{\link[readr:read_delim]{readr::read_delim()}}.}
 }
 \description{
 Use \code{\link[readr:read_delim]{readr::read_delim()}} without specifying \emph{any} column types. All columns

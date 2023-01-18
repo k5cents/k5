@@ -15,6 +15,7 @@ Depends:
 Imports: 
     aws.s3 (>= 0.3.21),
     dplyr (>= 1.0.10),
+    clipr (>= 0.8.0),
     fs (>= 1.5.2),
     ggplot2 (>= 3.4.0),
     glue (>= 1.6.2),
@@ -27,7 +28,6 @@ Imports:
     usethis (>= 2.1.6),
     utils
 Suggests: 
-    clipr (>= 0.8.0),
     covr (>= 3.6.1),
     crayon (>= 1.5.2),
     gluedown (>= 1.0.6),
