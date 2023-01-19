@@ -26,6 +26,11 @@ Found the following files/directories:
 As noted in [R-hub issue #503](https://github.com/r-hub/rhub/issues/503), 
 this could be due to a bug/crash in MiKTeX and can likely be ignored.
 
+## Resubmission
+
+* Added paragraph Description field to DESCRIPTION file.
+* Added `\value` tags to all function documentation.
+
 <!-- links: start -->
 [gh_act]: https://github.com/kiernann/gluedown/actions
 [rhub_win]: https://builder.r-hub.io/status/k5_0.0.5.tar.gz-fe4507f92e784b6daebe78ca907525be

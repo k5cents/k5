@@ -66,3 +66,25 @@ read_delim_clip <- function(delim = "\t", ...) {
     ...
   )
 }
+
+#' Write a table from the clipboard
+#'
+#' Use [readr::format_delim()] on a data frame to copy a string to the
+#' clipboard. Defaults to tab separator like given when copying cells from
+#' spreadsheets.
+#'
+#' @param x A data frame to write to clipboard.
+#' @param delim Single character used to separate fields within a record.
+#' @param ... Additional arguments passed to [readr::format_delim()].
+#' @importFrom readr format_delim
+#' @importFrom clipr write_clip
+#' @export
+write_delim_clip <- function(x, delim = "\t", ...) {
+  clipr::write_clip(
+    content = readr::format_delim(
+      x = x,
+      delim = delim,
+      ...
+    )
+  )
+}
