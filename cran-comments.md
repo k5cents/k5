@@ -30,6 +30,8 @@ this could be due to a bug/crash in MiKTeX and can likely be ignored.
 
 * Added paragraph Description field to DESCRIPTION file.
 * Added `\value` tags to all function documentation.
+    * Added `\value` tags to the new clipboard reading/writing functions.
+* Spell checked new Description field in DESCRIPTION file.
 
 <!-- links: start -->
 [gh_act]: https://github.com/kiernann/gluedown/actions

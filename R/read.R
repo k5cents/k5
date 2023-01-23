@@ -58,6 +58,7 @@ read_tsv_dumb <- function(file, ...) {
 #' @param ... Additional arguments passed to [readr::read_delim()].
 #' @importFrom readr read_delim
 #' @importFrom clipr read_clip
+#' @return A data frame read from the clipboard.
 #' @export
 read_delim_clip <- function(delim = "\t", ...) {
   readr::read_delim(
@@ -78,6 +79,7 @@ read_delim_clip <- function(delim = "\t", ...) {
 #' @param ... Additional arguments passed to [readr::format_delim()].
 #' @importFrom readr format_delim
 #' @importFrom clipr write_clip
+#' @return Invisibly, the input data frame.
 #' @export
 write_delim_clip <- function(x, delim = "\t", ...) {
   clipr::write_clip(
@@ -87,4 +89,5 @@ write_delim_clip <- function(x, delim = "\t", ...) {
       ...
     )
   )
+  invisible(x)
 }

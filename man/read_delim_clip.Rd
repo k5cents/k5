@@ -11,6 +11,9 @@ read_delim_clip(delim = "\\t", ...)
 
 \item{...}{Additional arguments passed to \code{\link[readr:read_delim]{readr::read_delim()}}.}
 }
+\value{
+A data frame read from the clipboard.
+}
 \description{
 Use \code{\link[readr:read_delim]{readr::read_delim()}} on a string copied to the clipboard. Defaults to
 tab separator like given when copying cells from spreadsheets.

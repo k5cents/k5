@@ -13,6 +13,9 @@ write_delim_clip(x, delim = "\\t", ...)
 
 \item{...}{Additional arguments passed to \code{\link[readr:format_delim]{readr::format_delim()}}.}
 }
+\value{
+Invisibly, the input data frame.
+}
 \description{
 Use \code{\link[readr:format_delim]{readr::format_delim()}} on a data frame to copy a string to the
 clipboard. Defaults to tab separator like given when copying cells from
