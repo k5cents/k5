@@ -7,10 +7,12 @@
 
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html)
-[![Codecov test
-coverage](https://codecov.io/gh/kiernann/k5/branch/master/graph/badge.svg)](https://app.codecov.io/gh/kiernann/k5?branch=master)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/k5)](https://CRAN.R-project.org/package=k5)
 [![R build
 status](https://github.com/kiernann/k5/workflows/R-CMD-check/badge.svg)](https://github.com/kiernann/k5/actions)
+[![Codecov test
+coverage](https://codecov.io/gh/kiernann/k5/branch/master/graph/badge.svg)](https://app.codecov.io/gh/kiernann/k5?branch=master)
 <!-- badges: end -->
 
 The goal of `k5` is to offer miscellaneous quality of life functions
@@ -20,7 +22,14 @@ for scripts and packages.
 
 ## Installation
 
-You can install the development version of `k5` from
+You can install the release version of `k5` from
+[CRAN](https://CRAN.R-project.org/package=k5):
+
+``` r
+install.packages("k5")
+```
+
+The development version can be installed from
 [GitHub](https://github.com/kiernann/k5):
 
 ``` r
@@ -33,7 +42,7 @@ remotes::install_github("kiernann/k5")
 ``` r
 library(k5)
 packageVersion("k5")
-#> [1] '0.0.4'
+#> [1] '0.0.5'
 ```
 
 A list of frequently used packages can be loaded from a file.

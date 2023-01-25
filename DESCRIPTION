@@ -1,6 +1,6 @@
 Package: k5
 Title: Kiernan Nicholls Miscellaneous
-Version: 0.0.5
+Version: 0.0.5.9000
 Authors@R: 
     person("Kiernan", "Nicholls", , "kiernann@protonmail.com", role = c("aut", "cre"))
 Description: Quality of life functions for interactive programming.

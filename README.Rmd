@@ -24,8 +24,9 @@ if (!interactive()) {
 
 <!-- badges: start -->
 [![Lifecycle: experimental][life_badge]][life_link]
-[![Codecov test coverage][cov_badge]][cov_link]
+[![CRAN status][cran_badge]][cran_link]
 [![R build status][ga_badge]][ga_link]
+[![Codecov test coverage][cov_badge]][cov_link]
 <!-- badges: end -->
 
 The goal of `k5` is to offer miscellaneous quality of life functions used by
@@ -34,7 +35,13 @@ for me but are _bad_ for scripts and packages.
 
 ## Installation
 
-You can install the development version of `k5` from [GitHub][gh]:
+You can install the release version of `k5` from [CRAN][cran_link]:
+
+```{r install_cran, eval=FALSE}
+install.packages("k5")
+```
+
+The development version can be installed from [GitHub][gh]:
 
 ```{r install_github, eval=FALSE}
 # install.packages("remotes")
@@ -87,6 +94,8 @@ write_last()
 <!-- refs: start -->
 [life_badge]: https://img.shields.io/badge/lifecycle-experimental-orange.svg
 [life_link]: https://lifecycle.r-lib.org/articles/stages.html
+[cran_badge]: https://www.r-pkg.org/badges/version/k5
+[cran_link]: https://CRAN.R-project.org/package=k5
 [ga_badge]: https://github.com/kiernann/k5/workflows/R-CMD-check/badge.svg
 [ga_link]: https://github.com/kiernann/k5/actions
 [cov_badge]: https://codecov.io/gh/kiernann/k5/branch/master/graph/badge.svg
