@@ -2,11 +2,22 @@
 % Please edit documentation in R/read.R
 \name{read_delim_aws}
 \alias{read_delim_aws}
-\title{Read a CSV file from AWS object}
+\title{Read a delimited text file from AWS object}
 \usage{
 read_delim_aws(object, bucket = aws_bucket(), delim = ",", ...)
 }
 \arguments{
+\item{object}{Character string with the object key, or an object of class
+"s3_object". In most cases, if object is specified as the latter, bucket
+can be omitted because the bucket name will be extracted from "Bucket" slot
+in object.}
+
+\item{bucket}{Character string with the name of the bucket. If you use the
+same bucket frequently, you can set a default through an option named
+that can be retrieved with \code{\link[=aws_bucket]{aws_bucket()}}.}
+
+\item{delim}{Single character used to separate fields within a record.}
+
 \item{...}{Additional arguments passed to \code{\link[readr:read_delim]{readr::read_delim()}}.}
 }
 \value{
