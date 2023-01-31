@@ -91,3 +91,25 @@ write_delim_clip <- function(x, delim = "\t", ...) {
   )
   invisible(x)
 }
+
+#' Read a CSV file from AWS object
+#'
+#' Use [readr::read_delim()] on a comma-delimited text file stored as an object
+#' on an AWS S3 bucket.
+#'
+#' @param object
+#' @param bucket
+#' @param ... Additional arguments passed to [readr::read_delim()].
+#' @importFrom readr read_delim
+#' @importFrom aws.s3 s3read_using
+#' @return A data frame read from a remote file.
+#' @export
+read_delim_aws <- function(object, bucket = aws_bucket(), delim = ",", ...) {
+  aws.s3::s3read_using(
+    FUN = readr::read_delim,
+    object = object,
+    bucket = bucket,
+    delim = delim,
+    ...
+  )
+}

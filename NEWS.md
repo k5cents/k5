@@ -1,5 +1,7 @@
 # k5 (development version)
 
+* Add `read_delim_aws()` function.
+
 # k5 0.0.5
 
 * Add some more basic functions tests.
