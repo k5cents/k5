@@ -1,5 +1,6 @@
 # k5 (development version)
 
+* Add `var_missing()` and `var_distinct()` from `campfin::col_stats()`.
 * Add `read_delim_aws()` function.
 
 # k5 0.0.5
