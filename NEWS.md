@@ -1,4 +1,6 @@
-# k5 (development version)
+# k5 0.2.0
+
+# k5 0.1.0
 
 * Remove `aws_*()` and the dependency.
 * Add `var_missing()` and `var_distinct()` from `campfin::col_stats()`.
