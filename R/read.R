@@ -91,31 +91,3 @@ write_delim_clip <- function(x, delim = "\t", ...) {
   )
   invisible(x)
 }
-
-#' Read a delimited text file from AWS object
-#'
-#' Use [readr::read_delim()] on a comma-delimited text file stored as an object
-#' on an AWS S3 bucket.
-#'
-#' @param object Character string with the object key, or an object of class
-#'   "s3_object". In most cases, if object is specified as the latter, bucket
-#'   can be omitted because the bucket name will be extracted from "Bucket" slot
-#'   in object.
-#' @param bucket Character string with the name of the bucket. If you use the
-#'   same bucket frequently, you can set a default through an option named
-#'   that can be retrieved with [aws_bucket()].
-#' @param delim Single character used to separate fields within a record.
-#' @param ... Additional arguments passed to [readr::read_delim()].
-#' @importFrom readr read_delim
-#' @importFrom aws.s3 s3read_using
-#' @return A data frame read from a remote file.
-#' @export
-read_delim_aws <- function(object, bucket = aws_bucket(), delim = ",", ...) {
-  aws.s3::s3read_using(
-    FUN = readr::read_delim,
-    object = object,
-    bucket = bucket,
-    delim = delim,
-    ...
-  )
-}

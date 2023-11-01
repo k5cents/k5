@@ -15,7 +15,6 @@ BugReports: https://github.com/kiernann/k5/issues
 Depends: 
     R (>= 2.10)
 Imports: 
-    aws.s3 (>= 0.3.21),
     clipr (>= 0.8.0),
     dplyr (>= 1.0.10),
     fs (>= 1.5.2),

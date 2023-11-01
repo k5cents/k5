@@ -1,5 +1,3 @@
-aws.s3
-campfin
 cli
 clipr
 devtools
@@ -17,6 +15,5 @@ readxl
 refinr
 rvest
 scales
-tabulizer
 tidyverse
 usethis
