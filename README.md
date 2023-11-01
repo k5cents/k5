@@ -6,23 +6,24 @@
 <!-- badges: start -->
 
 [![Lifecycle:
-experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html)
+experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/k5)](https://CRAN.R-project.org/package=k5)
-[![R build
-status](https://github.com/kiernann/k5/workflows/R-CMD-check/badge.svg)](https://github.com/kiernann/k5/actions)
+![Downloads](https://cranlogs.r-pkg.org/badges/grand-total/k5)
 [![Codecov test
-coverage](https://codecov.io/gh/kiernann/k5/branch/master/graph/badge.svg)](https://app.codecov.io/gh/kiernann/k5?branch=master)
+coverage](https://img.shields.io/codecov/c/github/kiernann/k5/master.svg)](https://app.codecov.io/gh/kiernann/k5?branch=master')
+[![R build
+status](https://github.com/kiernann/k5/workflows/R-CMD-check/badge.svg)](https://github.com/kiernann/gluedown/actions)
 <!-- badges: end -->
 
-The goal of `k5` is to offer miscellaneous quality of life functions
+The goal of ‘k5’ is to offer miscellaneous quality of life functions
 used by [Kiernan Nicholls](https://github.com/kiernann) during
 interactive programming. They make things easier for me but are *bad*
 for scripts and packages.
 
 ## Installation
 
-You can install the release version of `k5` from
+You can install the release version of this package from
 [CRAN](https://CRAN.R-project.org/package=k5):
 
 ``` r
@@ -42,15 +43,15 @@ remotes::install_github("kiernann/k5")
 ``` r
 library(k5)
 packageVersion("k5")
-#> [1] '0.0.5'
+#> [1] '0.2.0'
 ```
 
 A list of frequently used packages can be loaded from a file.
 
 ``` r
-load.packages(path = NULL, install = FALSE)
-#> ✔ load 21 packages from
-#> '/home/kiernan/R/x86_64-pc-linux-gnu-library/4.2/k5/PACKAGES'
+load_my_packages()
+#> ✔ load 19 packages from
+#> '/home/kiernan/R/x86_64-pc-linux-gnu-library/4.1/k5/PACKAGES'
 ```
 
 Some functions wrap common combos like `mean(x %in% y)` or

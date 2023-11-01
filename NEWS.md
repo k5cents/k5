@@ -1,4 +1,6 @@
-# k5 0.2.0
+# k5 (development version)
+
+* Rename `load.packages()` to `load_my_packages()` and disable install.
 
 # k5 0.1.0
 

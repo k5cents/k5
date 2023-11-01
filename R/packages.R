@@ -1,28 +1,25 @@
 #' Save and load packages from file
 #'
-#' @param path The path to a text file containing package names. If `NULL`
-#'   (default), then the default list is read from `k5/inst/PACKAGES`.
-#' @param install If `TRUE`, install missing packages.
+#' @param path The path to a text file containing one package per line. If
+#'   `NULL` (default), then the default list is read from `k5/inst/PACKAGES`.
 #' @param x A character vector of package names to save. If `NULL` (default),
 #'   use all currently attached packages.
 #' @return The list of packages, invisibly.
 #' @export
-load.packages <- function(path = NULL, install = FALSE) {
+load_my_packages <- function(path = NULL) {
   if (is.null(path)) {
     path <- system.file("PACKAGES", package = "k5", mustWork = TRUE)
   }
   x <- readLines(path)
-  if (isFALSE(install)) {
-    x <- x[vapply(x, is_installed, logical(1))]
-  }
-  pacman::p_load(char = x)
+  is_loaded <- vapply(x, require_quiet, logical(1))
+  x <- x[is_loaded]
   usethis::ui_done("load {length(x)} packages from {usethis::ui_path(path)}")
   invisible(x)
 }
 
-#' @rdname load.packages
+#' @rdname load_my_packages
 #' @export
-save.packages <- function(x = NULL, path = tempfile()) {
+save_my_packages <- function(x = NULL, path = tempfile()) {
   if (is.null(path)) {
     path <- system.file("PACKAGES", package = "k5", mustWork = TRUE)
   }
@@ -33,4 +30,8 @@ save.packages <- function(x = NULL, path = tempfile()) {
   writeLines(x, path)
   usethis::ui_done("saved {length(x)} packages to {usethis::ui_path(path)}")
   invisible(x)
+}
+
+require_quiet <- function(...) {
+  suppressPackageStartupMessages(require(..., character.only = TRUE))
 }

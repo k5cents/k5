@@ -25,17 +25,18 @@ if (!interactive()) {
 <!-- badges: start -->
 [![Lifecycle: experimental][life_badge]][life_link]
 [![CRAN status][cran_badge]][cran_link]
-[![R build status][ga_badge]][ga_link]
+![Downloads][dl_badge]
 [![Codecov test coverage][cov_badge]][cov_link]
+[![R build status][ga_badge]][ga_link]
 <!-- badges: end -->
 
-The goal of `k5` is to offer miscellaneous quality of life functions used by
+The goal of 'k5' is to offer miscellaneous quality of life functions used by
 [Kiernan Nicholls][kn] during interactive programming. They make things easier
 for me but are _bad_ for scripts and packages.
 
 ## Installation
 
-You can install the release version of `k5` from [CRAN][cran_link]:
+You can install the release version of this package from [CRAN][cran_link]:
 
 ```{r install_cran, eval=FALSE}
 install.packages("k5")
@@ -58,7 +59,7 @@ packageVersion("k5")
 A list of frequently used packages can be loaded from a file.
 
 ```{r load}
-load.packages(path = NULL, install = FALSE)
+load_my_packages()
 ```
 
 Some functions wrap common combos like `mean(x %in% y)` or `sum(is.na(x))`.
@@ -93,16 +94,14 @@ write_last()
 
 <!-- refs: start -->
 [life_badge]: https://img.shields.io/badge/lifecycle-experimental-orange.svg
-[life_link]: https://lifecycle.r-lib.org/articles/stages.html
+[life_link]: https://lifecycle.r-lib.org/articles/stages.html#experimental
 [cran_badge]: https://www.r-pkg.org/badges/version/k5
 [cran_link]: https://CRAN.R-project.org/package=k5
 [ga_badge]: https://github.com/kiernann/k5/workflows/R-CMD-check/badge.svg
-[ga_link]: https://github.com/kiernann/k5/actions
-[cov_badge]: https://codecov.io/gh/kiernann/k5/branch/master/graph/badge.svg
-[cov_link]: https://app.codecov.io/gh/kiernann/k5?branch=master
+[ga_link]: https://github.com/kiernann/gluedown/actions
+[cov_badge]: https://img.shields.io/codecov/c/github/kiernann/k5/master.svg
+[cov_link]: https://app.codecov.io/gh/kiernann/k5?branch=master'
 [dl_badge]: https://cranlogs.r-pkg.org/badges/grand-total/k5
 [gh]: https://github.com/kiernann/k5
 [kn]: https://github.com/kiernann
-[zippr]: https://github.com/kiernann/zippr
-[zip]: https://github.com/r-lib/zip
 <!-- refs: end -->
