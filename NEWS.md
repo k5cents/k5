@@ -1,5 +1,6 @@
-# k5 (development version)
+# k5 0.2.1
 
+* Update maintainer email, website URL, and GitHub URL.
 * Rename `load.packages()` to `load_my_packages()` and disable install.
 
 # k5 0.1.0
