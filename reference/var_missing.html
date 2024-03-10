@@ -19,7 +19,7 @@ missing or proportion distinct)."><meta property="og:image" content="/logo.png">
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">k5</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.0.9001</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.1</span>
       </span>
     </div>
 
@@ -31,7 +31,7 @@ missing or proportion distinct)."><meta property="og:image" content="/logo.png">
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul><ul class="nav navbar-nav navbar-right"><li>
-  <a href="https://github.com/kiernann/k5/" class="external-link">
+  <a href="https://github.com/k5cents/k5/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -46,7 +46,7 @@ missing or proportion distinct)."><meta property="og:image" content="/logo.png">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Apply a statistic function to all variables</h1>
-    <small class="dont-index">Source: <a href="https://github.com/kiernann/k5/blob/HEAD/R/col-stats.R" class="external-link"><code>R/col-stats.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/k5cents/k5/blob/HEAD/R/col-stats.R" class="external-link"><code>R/col-stats.R</code></a></small>
     <div class="hidden name"><code>var_missing.Rd</code></div>
     </div>
 
@@ -89,28 +89,28 @@ missing or proportion distinct).</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> lat                          &lt;dbl&gt;     0 0    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> long                         &lt;dbl&gt;     0 0    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> status                       &lt;fct&gt;     0 0    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> category                     &lt;dbl&gt; <span style="text-decoration: underline;">14</span>382 0.754</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> category                     &lt;dbl&gt; <span style="text-decoration: underline;">14</span>734 0.754</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> wind                         &lt;int&gt;     0 0    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> pressure                     &lt;int&gt;     0 0    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> tropicalstorm_force_diameter &lt;int&gt;  <span style="text-decoration: underline;">9</span>512 0.499</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> hurricane_force_diameter     &lt;int&gt;  <span style="text-decoration: underline;">9</span>512 0.499</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> tropicalstorm_force_diameter &lt;int&gt;  <span style="text-decoration: underline;">9</span>512 0.487</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> hurricane_force_diameter     &lt;int&gt;  <span style="text-decoration: underline;">9</span>512 0.487</span>
 <span class="r-in"><span><span class="fu">var_distinct</span><span class="op">(</span><span class="fu">dplyr</span><span class="fu">::</span><span class="va"><a href="https://dplyr.tidyverse.org/reference/storms.html" class="external-link">storms</a></span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 13 × 4</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    var                          class     n        p</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> name                         &lt;chr&gt;   258 0.013<span style="text-decoration: underline;">5</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> year                         &lt;dbl&gt;    47 0.002<span style="text-decoration: underline;">47</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> month                        &lt;dbl&gt;    10 0.000<span style="text-decoration: underline;">524</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> day                          &lt;int&gt;    31 0.001<span style="text-decoration: underline;">63</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> hour                         &lt;dbl&gt;    24 0.001<span style="text-decoration: underline;">26</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> lat                          &lt;dbl&gt;   550 0.028<span style="text-decoration: underline;">8</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> long                         &lt;dbl&gt;  <span style="text-decoration: underline;">1</span>000 0.052<span style="text-decoration: underline;">4</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> status                       &lt;fct&gt;     9 0.000<span style="text-decoration: underline;">472</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> category                     &lt;dbl&gt;     6 0.000<span style="text-decoration: underline;">315</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> wind                         &lt;int&gt;    33 0.001<span style="text-decoration: underline;">73</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> pressure                     &lt;int&gt;   129 0.006<span style="text-decoration: underline;">77</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> tropicalstorm_force_diameter &lt;int&gt;   139 0.007<span style="text-decoration: underline;">29</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> hurricane_force_diameter     &lt;int&gt;    42 0.002<span style="text-decoration: underline;">20</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> name                         &lt;chr&gt;   260 0.013<span style="text-decoration: underline;">3</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> year                         &lt;dbl&gt;    48 0.002<span style="text-decoration: underline;">46</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> month                        &lt;dbl&gt;    10 0.000<span style="text-decoration: underline;">512</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> day                          &lt;int&gt;    31 0.001<span style="text-decoration: underline;">59</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> hour                         &lt;dbl&gt;    24 0.001<span style="text-decoration: underline;">23</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> lat                          &lt;dbl&gt;   550 0.028<span style="text-decoration: underline;">2</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> long                         &lt;dbl&gt;  <span style="text-decoration: underline;">1</span>022 0.052<span style="text-decoration: underline;">3</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> status                       &lt;fct&gt;     9 0.000<span style="text-decoration: underline;">461</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> category                     &lt;dbl&gt;     6 0.000<span style="text-decoration: underline;">307</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> wind                         &lt;int&gt;    32 0.001<span style="text-decoration: underline;">64</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> pressure                     &lt;int&gt;   129 0.006<span style="text-decoration: underline;">60</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> tropicalstorm_force_diameter &lt;int&gt;   142 0.007<span style="text-decoration: underline;">27</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> hurricane_force_diameter     &lt;int&gt;    43 0.002<span style="text-decoration: underline;">20</span> </span>
 </code></pre></div>
     </div>
   </div>
