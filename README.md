@@ -11,13 +11,13 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 status](https://www.r-pkg.org/badges/version/k5)](https://CRAN.R-project.org/package=k5)
 ![Downloads](https://cranlogs.r-pkg.org/badges/grand-total/k5)
 [![Codecov test
-coverage](https://img.shields.io/codecov/c/github/kiernann/k5/master.svg)](https://app.codecov.io/gh/kiernann/k5?branch=master')
+coverage](https://img.shields.io/codecov/c/github/k5cents/k5/master.svg)](https://app.codecov.io/gh/k5cents/k5?branch=master')
 [![R build
-status](https://github.com/kiernann/k5/workflows/R-CMD-check/badge.svg)](https://github.com/kiernann/gluedown/actions)
+status](https://github.com/k5cents/k5/workflows/R-CMD-check/badge.svg)](https://github.com/k5cents/gluedown/actions)
 <!-- badges: end -->
 
 The goal of ‘k5’ is to offer miscellaneous quality of life functions
-used by [Kiernan Nicholls](https://github.com/kiernann) during
+used by [Kiernan Nicholls](https://github.com/k5cents) during
 interactive programming. They make things easier for me but are *bad*
 for scripts and packages.
 
@@ -31,11 +31,11 @@ install.packages("k5")
 ```
 
 The development version can be installed from
-[GitHub](https://github.com/kiernann/k5):
+[GitHub](https://github.com/k5cents/k5):
 
 ``` r
 # install.packages("remotes")
-remotes::install_github("kiernann/k5")
+remotes::install_github("k5cents/k5")
 ```
 
 ## Example
