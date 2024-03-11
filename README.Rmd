@@ -99,7 +99,7 @@ write_last()
 [cran_link]: https://CRAN.R-project.org/package=k5
 [ga_badge]: https://github.com/k5cents/k5/workflows/R-CMD-check/badge.svg
 [ga_link]: https://github.com/k5cents/gluedown/actions
-[cov_badge]: https://img.shields.io/codecov/c/github/k5cents/k5/master.svg
+[cov_badge]: https://codecov.io/gh/k5cents/k5/graph/badge.svg?token=VCjNuCUEkS
 [cov_link]: https://app.codecov.io/gh/k5cents/k5?branch=master'
 [dl_badge]: https://cranlogs.r-pkg.org/badges/grand-total/k5
 [gh]: https://github.com/k5cents/k5

@@ -11,7 +11,7 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 status](https://www.r-pkg.org/badges/version/k5)](https://CRAN.R-project.org/package=k5)
 ![Downloads](https://cranlogs.r-pkg.org/badges/grand-total/k5)
 [![Codecov test
-coverage](https://img.shields.io/codecov/c/github/k5cents/k5/master.svg)](https://app.codecov.io/gh/k5cents/k5?branch=master')
+coverage](https://codecov.io/gh/k5cents/k5/graph/badge.svg?token=VCjNuCUEkS)](https://app.codecov.io/gh/k5cents/k5?branch=master')
 [![R build
 status](https://github.com/k5cents/k5/workflows/R-CMD-check/badge.svg)](https://github.com/k5cents/gluedown/actions)
 <!-- badges: end -->
@@ -43,7 +43,7 @@ remotes::install_github("k5cents/k5")
 ``` r
 library(k5)
 packageVersion("k5")
-#> [1] '0.2.0'
+#> [1] '0.2.1'
 ```
 
 A list of frequently used packages can be loaded from a file.
