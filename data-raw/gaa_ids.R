@@ -9,6 +9,9 @@ gaa_2024 <- gaa %>%
     abbrev = fct_recode(abbrev, "JUST" = "CHAR")
   )
 
+gaa <- bind_rows(gaa, gaa_2024)
+
 usethis::use_data(gaa, overwrite = TRUE)
 readr::write_csv(gaa, "data-raw/gaa_ids.csv", na = "")
+readr::write_rds(gaa, "data-raw/gaa_ids.rds")
 
