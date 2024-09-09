@@ -1,120 +1,42 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>/404.html</loc>
-  </url>
-  <url>
-    <loc>/LICENSE.html</loc>
-  </url>
-  <url>
-    <loc>/authors.html</loc>
-  </url>
-  <url>
-    <loc>/index.html</loc>
-  </url>
-  <url>
-    <loc>/news/index.html</loc>
-  </url>
-  <url>
-    <loc>/reference/contract_convert.html</loc>
-  </url>
-  <url>
-    <loc>/reference/copy_last.html</loc>
-  </url>
-  <url>
-    <loc>/reference/count2.html</loc>
-  </url>
-  <url>
-    <loc>/reference/count_diff.html</loc>
-  </url>
-  <url>
-    <loc>/reference/count_in.html</loc>
-  </url>
-  <url>
-    <loc>/reference/count_na.html</loc>
-  </url>
-  <url>
-    <loc>/reference/count_out.html</loc>
-  </url>
-  <url>
-    <loc>/reference/file_age.html</loc>
-  </url>
-  <url>
-    <loc>/reference/file_encoding.html</loc>
-  </url>
-  <url>
-    <loc>/reference/filter_rx.html</loc>
-  </url>
-  <url>
-    <loc>/reference/gaa.html</loc>
-  </url>
-  <url>
-    <loc>/reference/grapes-out-grapes.html</loc>
-  </url>
-  <url>
-    <loc>/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>/reference/last_value.html</loc>
-  </url>
-  <url>
-    <loc>/reference/load_my_packages.html</loc>
-  </url>
-  <url>
-    <loc>/reference/na_in.html</loc>
-  </url>
-  <url>
-    <loc>/reference/na_out.html</loc>
-  </url>
-  <url>
-    <loc>/reference/na_rep.html</loc>
-  </url>
-  <url>
-    <loc>/reference/pipe.html</loc>
-  </url>
-  <url>
-    <loc>/reference/print_all.html</loc>
-  </url>
-  <url>
-    <loc>/reference/prop_distinct.html</loc>
-  </url>
-  <url>
-    <loc>/reference/prop_in.html</loc>
-  </url>
-  <url>
-    <loc>/reference/prop_na.html</loc>
-  </url>
-  <url>
-    <loc>/reference/prop_out.html</loc>
-  </url>
-  <url>
-    <loc>/reference/read_delim_clip.html</loc>
-  </url>
-  <url>
-    <loc>/reference/read_delim_dumb.html</loc>
-  </url>
-  <url>
-    <loc>/reference/var_missing.html</loc>
-  </url>
-  <url>
-    <loc>/reference/view_firefox.html</loc>
-  </url>
-  <url>
-    <loc>/reference/view_last.html</loc>
-  </url>
-  <url>
-    <loc>/reference/what_in.html</loc>
-  </url>
-  <url>
-    <loc>/reference/what_out.html</loc>
-  </url>
-  <url>
-    <loc>/reference/word_count.html</loc>
-  </url>
-  <url>
-    <loc>/reference/write_delim_clip.html</loc>
-  </url>
-  <url>
-    <loc>/reference/write_last.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>/404.html</loc></url>
+<url><loc>/LICENSE.html</loc></url>
+<url><loc>/authors.html</loc></url>
+<url><loc>/index.html</loc></url>
+<url><loc>/news/index.html</loc></url>
+<url><loc>/reference/contract_convert.html</loc></url>
+<url><loc>/reference/copy_last.html</loc></url>
+<url><loc>/reference/count2.html</loc></url>
+<url><loc>/reference/count_diff.html</loc></url>
+<url><loc>/reference/count_in.html</loc></url>
+<url><loc>/reference/count_na.html</loc></url>
+<url><loc>/reference/count_out.html</loc></url>
+<url><loc>/reference/file_age.html</loc></url>
+<url><loc>/reference/file_encoding.html</loc></url>
+<url><loc>/reference/filter_rx.html</loc></url>
+<url><loc>/reference/gaa.html</loc></url>
+<url><loc>/reference/grapes-out-grapes.html</loc></url>
+<url><loc>/reference/index.html</loc></url>
+<url><loc>/reference/last_value.html</loc></url>
+<url><loc>/reference/load_my_packages.html</loc></url>
+<url><loc>/reference/na_in.html</loc></url>
+<url><loc>/reference/na_out.html</loc></url>
+<url><loc>/reference/na_rep.html</loc></url>
+<url><loc>/reference/pipe.html</loc></url>
+<url><loc>/reference/print_all.html</loc></url>
+<url><loc>/reference/prop_distinct.html</loc></url>
+<url><loc>/reference/prop_in.html</loc></url>
+<url><loc>/reference/prop_na.html</loc></url>
+<url><loc>/reference/prop_out.html</loc></url>
+<url><loc>/reference/read_delim_clip.html</loc></url>
+<url><loc>/reference/read_delim_dumb.html</loc></url>
+<url><loc>/reference/var_missing.html</loc></url>
+<url><loc>/reference/view_firefox.html</loc></url>
+<url><loc>/reference/view_last.html</loc></url>
+<url><loc>/reference/what_in.html</loc></url>
+<url><loc>/reference/what_out.html</loc></url>
+<url><loc>/reference/word_count.html</loc></url>
+<url><loc>/reference/write_delim_clip.html</loc></url>
+<url><loc>/reference/write_last.html</loc></url>
 </urlset>
+
